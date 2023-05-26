@@ -33,9 +33,32 @@ header {
     gap: 1.5rem;
 }
 
-/* .title {
-        display: none;
-    } */
+.menu li {
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu li:hover {
+    transform: scale(1.1);
+}
+
+.menu li::before {
+    content: "";
+    position: absolute;
+    bottom: -0.2rem;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+    background-color: #000;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.menu li:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+}
 
 /* Mobile Menu */
 
