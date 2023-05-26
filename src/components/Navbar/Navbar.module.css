@@ -32,3 +32,74 @@ header {
     list-style: none;
     gap: 1.5rem;
 }
+
+/* .title {
+        display: none;
+    } */
+
+/* Mobile Menu */
+
+@media (max-width: 45em) {
+    .mobileMenuToggle {
+        display: none;
+        cursor: pointer;
+    }
+
+    .container {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .nav {
+        display: none;
+        width: 100%;
+    }
+
+    .nav.open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 1rem;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .mobileMenuToggle {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .mobileMenuLogo {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .bar {
+        width: 2rem;
+        height: 0.2rem;
+        background-color: #000;
+        margin-bottom: 0.4rem;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .mobileMenuToggle.open .bar:nth-child(1) {
+        transform: rotate(45deg) translate(0.3rem, 0.4rem);
+    }
+
+    .mobileMenuToggle.open .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobileMenuToggle.open .bar:nth-child(3) {
+        transform: rotate(-45deg) translate(0.3rem, -0.4rem);
+    }
+}
