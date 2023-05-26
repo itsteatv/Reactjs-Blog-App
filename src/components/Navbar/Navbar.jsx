@@ -13,8 +13,9 @@ function Header() {
         <>
             <header className={styles.header}>
                 <div className={styles.container}>
-                    <div className={styles.title}>Blog App</div>
-                    <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
+                    {isMobileMenuOpen ? null : (
+                        <div className={styles.title}>Blog App</div>
+                    )}                    <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
                         <ul className={styles.menu}>
                             <li>Home</li>
                             <li>About</li>
@@ -23,8 +24,10 @@ function Header() {
                             <li>Logout</li>
                         </ul>
                     </nav>
-                    <img className={styles.logo} src={logo} alt="itsteatv logo" />
-                    <div className={styles.mobileMenuToggle} onClick={toggleMobileMenu}>
+                    {isMobileMenuOpen ? null : (
+                        <img className={styles.logo} src={logo} alt="itsteatv logo" />
+                    )}                    <div className={`${styles.mobileMenuToggle} ${isMobileMenuOpen ? styles.open : ""
+                        }`} onClick={toggleMobileMenu}>
                         <span className={styles.bar}></span>
                         <span className={styles.bar}></span>
                         <span className={styles.bar}></span>
