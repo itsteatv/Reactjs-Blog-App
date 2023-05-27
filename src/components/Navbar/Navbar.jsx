@@ -2,7 +2,7 @@ import { useState } from "react"
 import styles from "./Navbar.module.css"
 import logo from "../../assets/logo.png"
 
-function Header() {
+function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     const toggleMobileMenu = function () {
@@ -38,4 +38,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Navbar
