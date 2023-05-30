@@ -19,10 +19,12 @@
     color: #fff;
     font-weight: 300;
     padding: 1rem;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
 }
 
 .descText {
     font-weight: 500;
     color: rgb(253, 246, 126);
     text-align: center;
+    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.5rem);
 }
