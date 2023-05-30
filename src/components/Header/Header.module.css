@@ -18,10 +18,11 @@
 .titleText {
     color: #fff;
     font-weight: 300;
-    padding: 15px;
+    padding: 1rem;
 }
 
 .descText {
     font-weight: 500;
     color: rgb(253, 246, 126);
+    text-align: center;
 }
