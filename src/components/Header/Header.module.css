@@ -1,0 +1,27 @@
+.slideContainer {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: -0.4rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleText {
+    color: #fff;
+    font-weight: 300;
+    padding: 15px;
+}
+
+.descText {
+    font-weight: 500;
+    color: rgb(253, 246, 126);
+}
