@@ -1,6 +1,6 @@
 import { useState } from "react"
 import styles from "./Navbar.module.css"
-import logo from "../../assets/logo.png"
+import Logo from "../../assets/Logo.png"
 
 function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -14,7 +14,7 @@ function Navbar() {
             <header className={styles.header}>
                 <div className={styles.container}>
                     {isMobileMenuOpen ? null : (
-                        <div className={styles.title}>Blog App</div>
+                        <img src={Logo}></img>
                     )}                    <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
                         <ul className={styles.menu}>
                             <li>Home</li>
@@ -24,9 +24,7 @@ function Navbar() {
                             <li>Logout</li>
                         </ul>
                     </nav>
-                    {isMobileMenuOpen ? null : (
-                        <img className={styles.logo} src={logo} alt="itsteatv logo" />
-                    )}                    <div className={`${styles.mobileMenuToggle} ${isMobileMenuOpen ? styles.open : ""
+                    <div className={`${styles.mobileMenuToggle} ${isMobileMenuOpen ? styles.open : ""
                         }`} onClick={toggleMobileMenu}>
                         <span className={styles.bar}></span>
                         <span className={styles.bar}></span>
