@@ -1,5 +1,6 @@
 import { useState } from "react"
 import styles from "./Navbar.module.css"
+import Logo from "../../assets/Logo.png"
 
 function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -13,7 +14,7 @@ function Navbar() {
             <header className={styles.header}>
                 <div className={styles.container}>
                     {isMobileMenuOpen ? null : (
-                        <img></img>
+                        <img src={Logo}></img>
                     )}                    <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
                         <ul className={styles.menu}>
                             <li>Home</li>
