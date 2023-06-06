@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+
 .slideContainer {
+    font-family: "Work Sans";
     position: relative;
 }
 
@@ -24,7 +27,7 @@
 
 .descText {
     font-weight: 500;
-    color: rgb(253, 246, 126);
+    color: #97989F;
     text-align: center;
     font-size: clamp(1rem, 0.5vw + 0.9rem, 1.5rem);
 }
