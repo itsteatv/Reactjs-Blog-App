@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
 
 header {
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 8px rgba(0, 0, 0, 0.06);
     padding: 1.25rem;
     width: 100%;
     position: sticky;
@@ -14,12 +12,13 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 4rem;
 }
 
 .nav {
     flex-grow: 1;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
 }
 
@@ -30,7 +29,7 @@ header {
 }
 
 .menu li {
-    color: #3B3C4A;
+    color: hsl(var(--txt));
     position: relative;
     transition: transform 0.3s ease-in-out;
     font-family: 'Work Sans';
@@ -70,7 +69,7 @@ header {
     .container {
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-end;
     }
 
     .nav {
@@ -108,7 +107,7 @@ header {
     .bar {
         width: 2rem;
         height: 0.2rem;
-        background-color: #000;
+        background-color: hsl(var(--txt));
         margin-bottom: 0.4rem;
         transition: transform 0.3s ease-in-out;
     }
