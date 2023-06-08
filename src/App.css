@@ -6,11 +6,96 @@
   box-sizing: border-box;
 }
 
+:root {
+  --_hue: 245;
+  --_size: 1.8rem;
+  --_radius: 0.2em;
+  --_tspeed_fast: 180ms;
+  --_tspeed_slow: 300ms;
+  --_ttype_squish: cubic-bezier(0.86, -0.1, 0.27, 1.15);
+
+  /* Light Mode */
+  --main-light-bg: #FFFFFF;
+  --light-border: #E8E8EA;
+  --bg--light: var(--_hue) 30% 94%;
+  --bg-toggle-button: #E8E8EA;
+  --bg-toggle-button-hover: #ffffff;
+  --txt--light: var(--_hue) 40% 5%;
+  --accent--light: var(--_hue) 55% 50%;
+  --accent1--light: 10 80% 60%;
+  --muted--light: var(--_hue) 30% 99%;
+  /* Dark Mode */
+  --main-dark-bg: #181A2A;
+  --dark-border: #242535;
+  --dark-bg-toggle-button: #4B6BFB;
+  --dark-bg-toggle-button-hover: #4264fa;
+  --bg--dark: var(--_hue) 15% 10%;
+  --txt--dark: var(--_hue) 30% 88%;
+  --accent--dark: var(--_hue) 50% 50%;
+  --accent1--dark: 10 55% 50%;
+  --muted--dark: var(--_hue) 20% 4%;
+  --primary-color: #131316;
+  --secondary-color: #fff;
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --main-bg: var(--main-light-bg);
+    --border-txt: var(--dark-border);
+    --bg: var(--bg--dark);
+    --txt: var(--txt--dark);
+    --accent: var(--accent--dark);
+    --accent1: var(--accent1--dark);
+    --muted: var(--muted--dark);
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --main-bg: var(--main-dark-bg);
+    --border-txt: var(--light-border);
+    --bg: var(--bg--light);
+    --txt: var(--txt--light);
+    --accent: var(--accent--light);
+    --accent1: var(--accent1--light);
+    --muted: var(--muted--light);
+    color-scheme: light;
+  }
+}
+
+:root[color-scheme="dark"] {
+  --main-bg: var(--main-dark-bg);
+  --border-txt: var(--dark-border);
+  --bg: var(--bg--dark);
+  --txt: var(--txt--dark);
+  --accent: var(--accent--dark);
+  --accent1: var(--accent1--dark);
+  --muted: var(--muted--dark);
+  color-scheme: dark;
+}
+
+:root[color-scheme="light"] {
+  --main-bg: var(--main-light-bg);
+  --border-txt: var(--light-border);
+  --bg: var(--bg--light);
+  --txt: var(--txt--light);
+  --accent: var(--accent--light);
+  --accent1: var(--accent1--light);
+  --muted: var(--muted--light);
+  color-scheme: light;
+}
+
+
 html,
 body {
   overflow-x: hidden;
   touch-action: pan-x pan-y;
   scrollbar-width: none;
+  background-color: hsl(var(--main-bg));
+  color: hsl(var(--txt));
   /* For Firefox */
   -ms-overflow-style: none;
   /* For Internet Explorer and Edge */
