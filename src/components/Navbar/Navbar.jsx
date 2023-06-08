@@ -1,6 +1,6 @@
 import { useState } from "react"
 import styles from "./Navbar.module.css"
-import Logo from "../../assets/Logo.png"
+import ThemeSwitcher from "../Theme Switcher/ThemeSwitcher";
 
 function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -13,15 +13,14 @@ function Navbar() {
         <>
             <header className={styles.header}>
                 <div className={styles.container}>
-                    {isMobileMenuOpen ? null : (
-                        <img src={Logo}></img>
-                    )}                    <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
+                    <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
                         <ul className={styles.menu}>
                             <li>Home</li>
                             <li>About</li>
                             <li>Contact</li>
                             <li>Write</li>
                             <li>Logout</li>
+                            <ThemeSwitcher />
                         </ul>
                     </nav>
                     <div className={`${styles.mobileMenuToggle} ${isMobileMenuOpen ? styles.open : ""
