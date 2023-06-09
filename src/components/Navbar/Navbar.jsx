@@ -20,7 +20,6 @@ function Navbar() {
                             <li>Contact</li>
                             <li>Write</li>
                             <li>Logout</li>
-                            <ThemeSwitcher />
                         </ul>
                     </nav>
                     <div className={`${styles.mobileMenuToggle} ${isMobileMenuOpen ? styles.open : ""
@@ -30,6 +29,7 @@ function Navbar() {
                         <span className={styles.bar}></span>
                     </div>
                 </div>
+                {!isMobileMenuOpen ? <ThemeSwitcher /> : ""}
             </header>
         </>
     )
