@@ -1,7 +1,7 @@
 .btn-container {
     display: flex;
     position: absolute;
-    top: 13px;
+    top: 12px;
     right: 1rem;
     z-index: 9999999;
 }
@@ -9,7 +9,6 @@
 .btns {
     display: flex;
     gap: 1em;
-    scale: 1.25;
 }
 
 .button {
@@ -90,4 +89,10 @@
 .darkButton .sunny-container {
     transform: translateX(100%);
     opacity: 1;
+}
+
+@media (max-width: 45em) {
+    .btn-container {
+        right: auto;
+    }
 }
