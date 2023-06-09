@@ -1,6 +1,8 @@
 import styles from "./Header.module.css"
 import headerImage from "../../assets/headerImage.png"
 import UserImage from "../../assets/UserImage.png"
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function Header() {
     return (
@@ -20,7 +22,7 @@ function Header() {
                     <div className={styles.date}>August 20, 2022</div>
                 </div>
             </div>
-            <img className={styles["header-image"]} src={headerImage} alt=""></img>
+            <LazyLoadImage className={styles["header-image"]} src={headerImage} alt="" effect="blur" width="100%" />
         </section>
     )
 }
