@@ -1,5 +1,5 @@
 import styles from "./Header.module.css"
-import headerImage from "../../assets/headerImage.png"
+import headerImage from "../../assets/HeaderImage.png"
 import UserImage from "../../assets/UserImage.png"
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
