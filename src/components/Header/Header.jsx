@@ -1,6 +1,6 @@
 import styles from "./Header.module.css"
 import headerImage from "../../assets/headerImage.png"
-import image from "../../assets/image.png"
+import UserImage from "../../assets/UserImage.png"
 
 function Header() {
     return (
@@ -14,7 +14,7 @@ function Header() {
                 </div>
                 <div className={styles["short-info"]}>
                     <div className={styles.author}>
-                        <img className={styles.userImage} src={image} alt=""></img>
+                        <img className={styles.userImage} src={UserImage} alt=""></img>
                         <span className={styles.name}>Tracy Wilson</span>
                     </div>
                     <div className={styles.date}>August 20, 2022</div>
