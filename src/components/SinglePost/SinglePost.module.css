@@ -92,7 +92,6 @@
     }
 
     .container .title {
-        text-align: center;
         display: flex;
         align-items: center;
         margin: auto 0;
@@ -118,5 +117,10 @@
 
     .container .badge-container {
         margin: 1rem auto;
+    }
+
+    .container .title {
+        text-align: center;
+        margin: 0 auto;
     }
 }
