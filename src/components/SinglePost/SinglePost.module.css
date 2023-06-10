@@ -84,7 +84,7 @@
 /* 450px */
 @media (max-width: 28em) {
     .container {
-        width: 80%;
+        width: 90%;
     }
 
     .container .image {
@@ -92,6 +92,7 @@
     }
 
     .container .title {
+        text-align: center;
         display: flex;
         align-items: center;
         margin: auto 0;
