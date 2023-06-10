@@ -80,3 +80,42 @@
     height: 84px;
     margin-top: 16px;
 }
+
+/* 450px */
+@media (max-width: 28em) {
+    .container {
+        width: 80%;
+    }
+
+    .container .image {
+        width: 100%;
+    }
+
+    .container .title {
+        display: flex;
+        align-items: center;
+        margin: auto 0;
+        width: 90%;
+        font-size: clamp(0.5rem, 0.08333333333333337rem + 4.166666666666666vw, 1.25rem);
+    }
+
+    .container .username,
+    .date {
+        font-size: clamp(0.5rem, 0.2222222222222222rem + 2.7777777777777777vw, 1rem);
+    }
+
+    .container .user {
+        gap: 10px;
+    }
+}
+
+/* 250px */
+@media (max-width: 15.625em) {
+    .container .user {
+        flex-direction: column;
+    }
+
+    .container .badge-container {
+        margin: 1rem auto;
+    }
+}
