@@ -1,126 +1,127 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
 
 header {
-    padding: 1.25rem;
-    width: 100%;
-    position: relative;
-    top: 0;
-    z-index: 999;
+  padding: 1.25rem;
+  width: 100%;
+  position: relative;
+  top: 0;
+  z-index: 999;
+  margin-bottom: 48px;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
 }
 
 .nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .menu {
-    display: flex;
-    list-style: none;
-    gap: 1.5rem;
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
 }
 
 .menu li {
-    color: hsl(var(--txt));
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-    font-family: 'Work Sans';
-    font-style: normal;
-    font-weight: 400;
+  color: hsl(var(--txt));
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
 }
 
 .menu li:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 .menu li::before {
-    content: "";
-    position: absolute;
-    bottom: -0.2rem;
-    left: 0;
-    width: 100%;
-    height: 0.2rem;
-    visibility: hidden;
-    transform: scaleX(0);
-    transition: all 0.3s ease-in-out;
+  content: "";
+  position: absolute;
+  bottom: -0.2rem;
+  left: 0;
+  width: 100%;
+  height: 0.2rem;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
 }
 
 .menu li:hover::before {
-    visibility: visible;
-    transform: scaleX(1);
+  visibility: visible;
+  transform: scaleX(1);
 }
 
 /* Mobile Menu */
 
 @media (max-width: 45em) {
-    .mobileMenuToggle {
-        display: none;
-        cursor: pointer;
-    }
+  .mobileMenuToggle {
+    display: none;
+    cursor: pointer;
+  }
 
-    .container {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-    }
+  .container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
 
-    .nav {
-        display: none;
-        width: 100%;
-    }
+  .nav {
+    display: none;
+    width: 100%;
+  }
 
-    .nav.open {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 1rem;
-    }
+  .nav.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+  }
 
-    .menu {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
 
-    .mobileMenuToggle {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-    }
+  .mobileMenuToggle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
 
-    .mobileMenuLogo {
-        width: 3.5rem;
-        height: 3.5rem;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-    }
+  .mobileMenuLogo {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+  }
 
-    .bar {
-        width: 2rem;
-        height: 0.2rem;
-        background-color: hsl(var(--txt));
-        margin-bottom: 0.4rem;
-        transition: transform 0.3s ease-in-out;
-    }
+  .bar {
+    width: 2rem;
+    height: 0.2rem;
+    background-color: hsl(var(--txt));
+    margin-bottom: 0.4rem;
+    transition: transform 0.3s ease-in-out;
+  }
 
-    .mobileMenuToggle.open .bar:nth-child(1) {
-        transform: rotate(45deg) translate(0.3rem, 0.4rem);
-    }
+  .mobileMenuToggle.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(0.3rem, 0.4rem);
+  }
 
-    .mobileMenuToggle.open .bar:nth-child(2) {
-        opacity: 0;
-    }
+  .mobileMenuToggle.open .bar:nth-child(2) {
+    opacity: 0;
+  }
 
-    .mobileMenuToggle.open .bar:nth-child(3) {
-        transform: rotate(-45deg) translate(0.3rem, -0.4rem);
-    }
+  .mobileMenuToggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(0.3rem, -0.4rem);
+  }
 }
