@@ -1,4 +1,4 @@
-import styles from "./SinglePost.module.css";
+import styles from "./Post.module.css";
 import data from "../../assets/data/data";
 import { Skeleton } from "@mui/material";
 import { useState, useEffect } from "react";
