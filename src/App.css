@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@600&display=swap");
 
 * {
   padding: 0;
@@ -15,19 +15,21 @@
   --_ttype_squish: cubic-bezier(0.86, -0.1, 0.27, 1.15);
 
   /* Light Mode */
-  --main-light-bg: #FFFFFF;
-  --light-border: #E8E8EA;
+  --quote-paragraph-light: #f6f6f7;
+  --main-light-bg: #ffffff;
+  --light-border: #e8e8ea;
   --bg--light: var(--_hue) 30% 94%;
-  --bg-toggle-button: #E8E8EA;
+  --bg-toggle-button: #e8e8ea;
   --bg-toggle-button-hover: #ffffff;
   --txt--light: var(--_hue) 40% 5%;
   --accent--light: var(--_hue) 55% 50%;
   --accent1--light: 10 80% 60%;
   --muted--light: var(--_hue) 30% 99%;
   /* Dark Mode */
-  --main-dark-bg: #181A2A;
+  --quote-paragraph-dark: #242535;
+  --main-dark-bg: #181a2a;
   --dark-border: #242535;
-  --dark-bg-toggle-button: #4B6BFB;
+  --dark-bg-toggle-button: #4b6bfb;
   --dark-bg-toggle-button-hover: #4264fa;
   --bg--dark: var(--_hue) 15% 10%;
   --txt--dark: var(--_hue) 30% 88%;
@@ -42,6 +44,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --quote: var(--quote-paragraph-dark);
     --main-bg: var(--main-light-bg);
     --border-txt: var(--dark-border);
     --bg: var(--bg--dark);
@@ -55,6 +58,7 @@
 
 @media (prefers-color-scheme: light) {
   :root {
+    --quote: var(--quote-paragraph-light);
     --main-bg: var(--main-dark-bg);
     --border-txt: var(--light-border);
     --bg: var(--bg--light);
@@ -67,6 +71,7 @@
 }
 
 :root[color-scheme="dark"] {
+  --quote: var(--quote-paragraph-dark);
   --main-bg: var(--main-dark-bg);
   --border-txt: var(--dark-border);
   --bg: var(--bg--dark);
@@ -78,6 +83,7 @@
 }
 
 :root[color-scheme="light"] {
+  --quote: var(--quote-paragraph-light);
   --main-bg: var(--main-light-bg);
   --border-txt: var(--light-border);
   --bg: var(--bg--light);
@@ -87,7 +93,6 @@
   --muted: var(--muted--light);
   color-scheme: light;
 }
-
 
 html,
 body {
