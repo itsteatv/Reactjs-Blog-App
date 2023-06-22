@@ -1,126 +1,138 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap");
+
+.link {
+  text-decoration: none;
+}
 
 .single-post {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 1rem;
-    gap: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 1rem;
+  gap: 1.25rem;
 }
 
 .container {
-    border: 1px solid var(--border-txt);
-    border-radius: 12px;
-    padding: 16px;
+  border: 1px solid var(--border-txt);
+  border-radius: 12px;
+  padding: 16px;
 }
 
 .image {
-    border-radius: 6px;
+  border-radius: 6px;
 }
 
 .desc {
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
 }
 
 .badge-container {
-    display: flex;
-    padding: 4px 10px;
-    gap: 4px;
-    width: 97px;
-    height: 28px;
-    background: rgba(75, 107, 251, 0.05);
-    border-radius: 6px;
-    margin-top: 1rem;
-    margin-left: 0.25rem;
+  display: flex;
+  padding: 4px 10px;
+  gap: 4px;
+  width: 97px;
+  height: 28px;
+  background: rgba(75, 107, 251, 0.05);
+  border-radius: 6px;
+  margin-top: 1rem;
+  margin-left: 0.25rem;
 }
 
 .badge {
-    width: 77px;
-    height: 20px;
-    font-family: 'Work Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 20px;
-    color: #4B6BFB;
+  width: 77px;
+  height: 20px;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #4b6bfb;
 }
 
 .user {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
 }
 
 .username {
-    color: #97989F;
-    font-family: 'Work Sans';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
+  color: #97989f;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 .date {
-    color: #97989F;
-    font-family: 'Work Sans';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 1rem;
+  color: #97989f;
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
 }
 
 .title {
-    color: hsl(var(--txt));
-    font-family: 'Work Sans';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    width: 344px;
-    height: 84px;
-    margin-top: 16px;
+  color: hsl(var(--txt));
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  width: 344px;
+  height: 84px;
+  margin-top: 16px;
 }
 
 /* 450px */
 @media (max-width: 28em) {
-    .container {
-        width: 90%;
-    }
+  .container {
+    width: 90%;
+  }
 
-    .container .image {
-        width: 100%;
-    }
+  .container .image {
+    width: 100%;
+  }
 
-    .container .title {
-        display: flex;
-        align-items: center;
-        margin: auto 0;
-        width: 90%;
-        font-size: clamp(0.5rem, 0.08333333333333337rem + 4.166666666666666vw, 1.25rem);
-    }
+  .container .title {
+    display: flex;
+    align-items: center;
+    margin: auto 0;
+    width: 90%;
+    font-size: clamp(
+      0.5rem,
+      0.08333333333333337rem + 4.166666666666666vw,
+      1.25rem
+    );
+  }
 
-    .container .username,
-    .date {
-        font-size: clamp(0.5rem, 0.2222222222222222rem + 2.7777777777777777vw, 1rem);
-    }
+  .container .username,
+  .date {
+    font-size: clamp(
+      0.5rem,
+      0.2222222222222222rem + 2.7777777777777777vw,
+      1rem
+    );
+  }
 
-    .container .user {
-        gap: 10px;
-    }
+  .container .user {
+    gap: 10px;
+  }
 }
 
 /* 250px */
 @media (max-width: 15.625em) {
-    .container .user {
-        flex-direction: column;
-    }
+  .container .user {
+    flex-direction: column;
+  }
 
-    .container .badge-container {
-        margin: 1rem auto;
-    }
+  .container .badge-container {
+    margin: 1rem auto;
+  }
 
-    .container .title {
-        text-align: center;
-        margin: 0 auto;
-    }
+  .container .title {
+    text-align: center;
+    margin: 0 auto;
+  }
 }
