@@ -139,3 +139,11 @@
     margin: 0 auto;
   }
 }
+
+/* 1665px ( Wide & Ultra Wide Monitors ) */
+@media (min-width: 104.0625em) {
+  .single-post {
+    margin: 0 auto;
+    max-width: 1400px;
+  }
+}
