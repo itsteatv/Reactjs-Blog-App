@@ -125,3 +125,12 @@ header {
     transform: rotate(-45deg) translate(0.3rem, -0.4rem);
   }
 }
+
+/* 1665px ( Wide & Ultra Wide Monitors ) */
+@media (min-width: 104.0625em) {
+  .header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+}
