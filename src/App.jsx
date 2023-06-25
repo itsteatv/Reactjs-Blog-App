@@ -1,34 +1,32 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-import Navbar from "./components/Navbar/Navbar"
-import routes from './components/Routes/Routes';
+// import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+// import Navbar from "./components/Navbar/Navbar"
+// import routes from './components/Routes/Routes';
 
-function App() {
-  return (
-    <BrowserRouter>
-      <Navbar />
-      <ScrollToTop />
-      <Routes>
-        {routes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            element={route.element}
-          />
-        ))}
-      </Routes>
-    </BrowserRouter>
-  );
-}
+// function App() {
+//   return (
+//     <BrowserRouter>
+//       <Navbar />
+//       <ScrollToTop />
+//       <Routes>
+//         {routes.map((route, index) => (
+//           <Route
+//             key={index}
+//             path={route.path}
+//             element={route.element}
+//           />
+//         ))}
+//       </Routes>
+//     </BrowserRouter>
+//   );
+// }
 
-export default App;
-
+// export default App;
 
 ////////////////////////////////////////////////////////////////////////////////
 
-/* 
-  !!! This Code Only Works with React Router v5 and it isn't supported by React Router v6 or above
-  but with installing one of react router v5 you can use this code. !!!
+// !!! This Code Only Works with React Router v5 and it isn't supported by React Router v6 or above
+// but with installing one of react router v5 you can use this code. !!!
 
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
@@ -56,4 +54,4 @@ function App() {
   );
 }
 
-export default App; */
+export default App;
