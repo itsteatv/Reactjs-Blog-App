@@ -1,32 +1,28 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from "./components/Navbar/Navbar";
-import Header from "./components/Header/Header";
-import SinglePost from "./components/SinglePost/SinglePost";
-import Posts from "./components/AllPosts/Posts";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-// import Error from "./components/Error/Error";
+import Navbar from "./components/Navbar/Navbar"
+import routes from './components/Routes/Routes';
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <ScrollToTop>
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Header />
-              <Posts />
-            </>
-          } />
-          <Route path="/post/:id" element={<SinglePost />} />
-          {/* <Route path="*" element={<Error />} /> */}
-        </Routes>
-      </ScrollToTop>
+      <ScrollToTop />
+      <Routes>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            element={route.element}
+          />
+        ))}
+      </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
+
 
 ////////////////////////////////////////////////////////////////////////////////
 
