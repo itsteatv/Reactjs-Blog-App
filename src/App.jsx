@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import SinglePost from "./components/SinglePost/SinglePost";
 import Posts from "./components/AllPosts/Posts";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
-import Error from "./components/Error/Error";
+// import Error from "./components/Error/Error";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
             </>
           } />
           <Route path="/post/:id" element={<SinglePost />} />
-          <Route path="*" element={<Error />} />
+          {/* <Route path="*" element={<Error />} /> */}
         </Routes>
       </ScrollToTop>
     </BrowserRouter>
