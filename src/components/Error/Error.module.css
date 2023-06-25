@@ -6,7 +6,7 @@
   flex-direction: column;
 }
 
-h1 {
+.error-title {
   color: hsl(var(--txt));
   text-align: center;
   font-family: Work Sans;
@@ -15,7 +15,7 @@ h1 {
   line-height: clamp(1rem, 2.222vw + 0.722rem, 2.5rem);
 }
 
-p {
+.error-desc {
   color: hsl(var(--txt));
   text-align: center;
   font-family: Work Sans;
