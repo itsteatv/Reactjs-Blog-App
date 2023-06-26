@@ -29,7 +29,8 @@ header {
   gap: 1.5rem;
 }
 
-.menu li {
+.menu a {
+  text-decoration: none;
   color: hsl(var(--txt));
   position: relative;
   transition: transform 0.3s ease-in-out;
@@ -38,11 +39,11 @@ header {
   font-weight: 400;
 }
 
-.menu li:hover {
+.menu a:hover {
   transform: scale(1.1);
 }
 
-.menu li::before {
+.menu a::before {
   content: "";
   position: absolute;
   bottom: -0.2rem;
