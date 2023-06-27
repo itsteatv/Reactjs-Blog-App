@@ -62,9 +62,9 @@ header {
 }
 
 .menu .linkStyle:hover::after,
-.menu .linkStyle.active::after {
+.menu .linkStyle::after {
   visibility: visible;
-  transform: scaleX(1);
+  transform: scaleX(1) scaleY(0.5);
 }
 
 /* Mobile Menu */
