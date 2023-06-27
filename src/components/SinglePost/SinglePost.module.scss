@@ -120,7 +120,8 @@
 
 /* PARAGRAPHS */
 .title {
-    width: 800px;
+    width: 100%;
+    max-width: 800px;
     height: 28px;
     font-family: "Work Sans";
     font-style: normal;

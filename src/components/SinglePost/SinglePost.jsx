@@ -84,7 +84,7 @@ function SinglePost() {
                         <div className={styles.conclusion}>
                             <div className={styles["conclusion-paragraph"]}>
                                 <div className={styles.title}>
-                                    Conclusion:ِ
+                                    Conclusion:
                                 </div>
                                 <p className={`${styles.paragraph} ${styles.conclusionP}`}>
                                     Traveling is an art form that requires a blend of planning, preparation, and spontaneity. By following these tips and tricks, you can make the most of your journey and create memories that last a lifetime. So pack your bags, embrace the adventure, and enjoy the ride.
