@@ -1,4 +1,4 @@
-import styles from "./SinglePost.module.css"
+import styles from "./SinglePost.module.scss"
 import UserImage from "../../assets/UserImage.png"
 import SinglePostImage from "../../assets/SinglePostImage.png"
 import SecSinglePostImage from "../../assets/SecSinglePostImage.png"
