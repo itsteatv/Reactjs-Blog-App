@@ -15,6 +15,10 @@
   --_ttype_squish: cubic-bezier(0.86, -0.1, 0.27, 1.15);
 
   /* Light Mode */
+  --light-login-text: #fff;
+  --light-login-title: #252eff;
+  --light-login-button: #252eff;
+  --light-login-input: #6066ff;
   --quote-paragraph-light: #f6f6f7;
   --main-light-bg: #ffffff;
   --light-border: #e8e8ea;
@@ -26,6 +30,10 @@
   --accent1--light: 10 80% 60%;
   --muted--light: var(--_hue) 30% 99%;
   /* Dark Mode */
+  --dark-login-text: #000000de;
+  --dark-login-title: #fff;
+  --dark-login-button: #bb86fc;
+  --dark-login-input: #bb86fc;
   --quote-paragraph-dark: #242535;
   --main-dark-bg: #181a2a;
   --dark-border: #242535;
@@ -44,6 +52,10 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --login-text: var(--dark-login-text);
+    --input: var(--dark-login-input);
+    --button: var(--dark-login-button);
+    --login: var(--dark-login-title);
     --quote: var(--quote-paragraph-dark);
     --main-bg: var(--main-light-bg);
     --border-txt: var(--dark-border);
@@ -58,6 +70,10 @@
 
 @media (prefers-color-scheme: light) {
   :root {
+    --login-text: var(--light-login-text);
+    --input: var(--light-login-input);
+    --button: var(--light-login-button);
+    --login: var(--light-login-title);
     --quote: var(--quote-paragraph-light);
     --main-bg: var(--main-dark-bg);
     --border-txt: var(--light-border);
@@ -71,6 +87,10 @@
 }
 
 :root[color-scheme="dark"] {
+  --login-text: var(--dark-login-text);
+  --input: var(--dark-login-input);
+  --button: var(--dark-login-button);
+  --login: var(--dark-login-title);
   --quote: var(--quote-paragraph-dark);
   --main-bg: var(--main-dark-bg);
   --border-txt: var(--dark-border);
@@ -83,6 +103,10 @@
 }
 
 :root[color-scheme="light"] {
+  --login-text: var(--light-login-text);
+  --input: var(--light-login-input);
+  --button: var(--light-login-button);
+  --login: var(--light-login-title);
   --quote: var(--quote-paragraph-light);
   --main-bg: var(--main-light-bg);
   --border-txt: var(--light-border);
