@@ -20,7 +20,7 @@ function Navbar() {
                             <NavLink to="/About" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>About</NavLink>
                             <NavLink to="/Contact" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Contact</NavLink>
                             <NavLink to="/Write" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Write</NavLink>
-                            <NavLink to="/Logout" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Logout</NavLink>
+                            <NavLink to="/login" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Login</NavLink>
                         </ul>
                     </nav>
                     <div className={`${styles.mobileMenuToggle} ${isMobileMenuOpen ? styles.open : ""

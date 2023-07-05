@@ -1,0 +1,141 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-title {
+  margin-bottom: 53px;
+  display: flex;
+  width: 120px;
+  height: 53px;
+  flex-direction: column;
+  flex-shrink: 0;
+  font-size: 44px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--login);
+}
+
+.btn-primary {
+  margin-top: 56px;
+  border: none;
+  display: flex;
+  width: 153px;
+  height: 38px;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 20px;
+  background: var(--button);
+  transition: 0.55s ease-in-out;
+}
+
+.btn-primary:focus,
+.btn-primary:hover {
+  outline: none;
+  color: var(--button);
+  box-shadow: 0 0 0 0.2em hsl(var(--bg--light)),
+    0 0 0 0.4em hsl(var(--accent--light) / 0.8);
+  transition: 0.55s ease-in-out;
+}
+
+.btn-primary:disabled {
+  background-color: #ccc;
+  color: #000000;
+  border-color: #ccc;
+  cursor: not-allowed;
+  transition: 0.55s ease-in-out;
+}
+
+.btn-primary:disabled:hover {
+  background-color: #ccc;
+  color: #000000;
+  transition: 0.55s ease-in-out;
+}
+
+.loginText {
+  color: var(--login-text);
+  font-size: 15px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.form-input {
+  margin-bottom: 18px;
+  display: flex;
+  width: 352px;
+  height: 40px;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 20px;
+  border: 2px solid var(--input);
+  background: transparent;
+  transition: 0.55s ease-in-out;
+}
+
+.form-input::placeholder {
+  color: hsl(var(--txt));
+  font-size: 15px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.form-input:hover,
+.form-input:focus {
+  outline: none;
+  color: hsl(var(--bg--dark));
+  box-shadow: 0 0 0 0.2em hsl(var(--bg--light)),
+    0 0 0 0.4em hsl(var(--accent--light) / 0.8);
+  transition: 0.55s ease-in-out;
+}
+
+.form-input.invalid {
+  border-color: red;
+}
+
+.shake {
+  animation: shake 0.5s linear;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
