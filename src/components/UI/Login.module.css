@@ -96,7 +96,7 @@
 
 .form-input::placeholder {
   color: hsl(var(--txt));
-  font-size: 15px;
+  font-size: clamp(0.5rem, 4.7vw - 0.2rem, 0.938rem);
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -136,5 +136,31 @@
   60%,
   80% {
     transform: translateX(5px);
+  }
+}
+
+/* 375px */
+@media (max-width: 23.4375em) {
+  .form-input {
+    width: 100%;
+    max-width: 352px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    max-width: 352px;
+  }
+}
+
+/* 225px */
+@media (max-width: 15.9375em) {
+  .form-input {
+    width: 90%;
+    max-width: 352px;
+  }
+
+  .btn-primary {
+    width: 90%;
+    max-width: 352px;
   }
 }

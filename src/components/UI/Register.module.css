@@ -21,7 +21,7 @@
   height: 53px;
   flex-direction: column;
   flex-shrink: 0;
-  font-size: 44px;
+  font-size: clamp(1rem, 2.5vw + 0.8rem, 2.75rem);
   font-family: Inter;
   font-style: normal;
   font-weight: 700;
@@ -107,7 +107,7 @@
 
 .register-input::placeholder {
   color: hsl(var(--txt));
-  font-size: 15px;
+  font-size: clamp(0.5rem, 0.6vw + 0.4rem, 0.938rem);
   font-family: Inter;
   font-style: normal;
   font-weight: 500;
@@ -147,5 +147,33 @@
   60%,
   80% {
     transform: translateX(5px);
+  }
+}
+
+/* 375px */
+@media (max-width: 23.4375em) {
+  .register-input {
+    width: 100%;
+    max-width: 352px;
+  }
+
+  .register-btn,
+  .haveAccount-btn {
+    width: 100%;
+    max-width: 352px;
+  }
+}
+
+/* 225px */
+@media (max-width: 15.9375em) {
+  .register-input {
+    width: 90%;
+    max-width: 352px;
+  }
+
+  .register-btn,
+  .haveAccount-btn {
+    width: 90%;
+    max-width: 352px;
   }
 }
