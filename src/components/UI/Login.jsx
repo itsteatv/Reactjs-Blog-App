@@ -39,7 +39,7 @@ function Login() {
     return (
         <section aria-label="Login" className={styles.login}>
             <form onSubmit={formSubmission} className={styles["form-container"]}>
-                <h1 className={styles["login-title"]}>Login</h1>
+                <h1 className={styles["form-title"]}>Login</h1>
                 <input
                     type="text"
                     className={`${styles["form-input"]} ${usernameError ? `${styles.invalid} ${styles.shake}` : ""}`}
