@@ -15,6 +15,8 @@
   --_ttype_squish: cubic-bezier(0.86, -0.1, 0.27, 1.15);
 
   /* Light Mode */
+  --light-have-account-button: #6066ff;
+  --light-register-button: #8b54ff;
   --light-login-text: #fff;
   --light-login-title: #252eff;
   --light-login-button: #252eff;
@@ -30,6 +32,8 @@
   --accent1--light: 10 80% 60%;
   --muted--light: var(--_hue) 30% 99%;
   /* Dark Mode */
+  --dark-have-account-button: #3700b3;
+  --dark-register-button: #6200ee;
   --dark-login-text: #000000de;
   --dark-login-title: #fff;
   --dark-login-button: #bb86fc;
@@ -52,6 +56,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --have-account: var(--dark-have-account-button);
+    --register: var(--dark-register-button);
     --login-text: var(--dark-login-text);
     --input: var(--dark-login-input);
     --button: var(--dark-login-button);
@@ -70,6 +76,8 @@
 
 @media (prefers-color-scheme: light) {
   :root {
+    --have-account: var(--light-have-account-button);
+    --register: var(--light-register-button);
     --login-text: var(--light-login-text);
     --input: var(--light-login-input);
     --button: var(--light-login-button);
@@ -87,6 +95,8 @@
 }
 
 :root[color-scheme="dark"] {
+  --have-account: var(--dark-have-account-button);
+  --register: var(--dark-register-button);
   --login-text: var(--dark-login-text);
   --input: var(--dark-login-input);
   --button: var(--dark-login-button);
@@ -103,6 +113,8 @@
 }
 
 :root[color-scheme="light"] {
+  --have-account: var(--light-have-account-button);
+  --register: var(--light-register-button);
   --login-text: var(--light-login-text);
   --input: var(--light-login-input);
   --button: var(--light-login-button);
