@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-.login-title {
+.form-title {
   margin-bottom: 53px;
   display: flex;
   width: 120px;
@@ -106,7 +106,6 @@
 .form-input:hover,
 .form-input:focus {
   outline: none;
-  color: hsl(var(--bg--dark));
   box-shadow: 0 0 0 0.2em hsl(var(--bg--light)),
     0 0 0 0.4em hsl(var(--accent--light) / 0.8);
   transition: 0.55s ease-in-out;
