@@ -20,7 +20,7 @@ function Login() {
         valueInputBlurHandler: passwordInputBlurHandler,
         resetValueHandler: resetPasswordHandler,
         formIsValid: passwordIsValid,
-    } = useInput((value) => value.trim().length !== 0);
+    } = useInput((value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value));
 
 
     const formIsValid = usernameIsValid && passwordIsValid

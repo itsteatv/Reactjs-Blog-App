@@ -21,7 +21,7 @@ function Register() {
         valueInputBlurHandler: emailInputBlurHandler,
         resetValueHandler: resetEmailHandler,
         formIsValid: emailIsValid,
-    } = useInput((value) => value.trim().length !== 0);
+    } = useInput((value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
 
     const {
         value: enteredPhone,
@@ -41,7 +41,7 @@ function Register() {
         valueInputBlurHandler: passwordInputBlurHandler,
         resetValueHandler: resetPasswordHandler,
         formIsValid: passwordIsValid,
-    } = useInput((value) => value.trim().length !== 0);
+    } = useInput((value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value));
 
     const {
         value: enteredConfirmPassword,
