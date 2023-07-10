@@ -6,30 +6,10 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { PiWarningCircleLight } from "react-icons/pi"
 import { useState } from "react";
 import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
+// import 'react-phone-input-2/lib/style.css'
 
 function Register() {
     const [open, setOpen] = useState(false);
-    // const [enteredPhone, setEnteredPhone] = useState("");
-    // const [phoneError, setPhoneError] = useState(false);
-    // const [inputIsTouched, setInputIsTouched] = useState(false);
-
-    // const phoneChangeHandler = (value) => {
-    //     setEnteredPhone(value || "");
-    // };
-
-    // const phoneInputBlurHandler = () => {
-    //     setInputIsTouched(true);
-    // };
-
-    // const validatePhone = (value) => {
-    //     return /^\d{10}$/.test(value);
-    // };
-
-    // const resetPhoneHandler = () => {
-    //     setEnteredPhone("");
-    //     setInputIsTouched(false);
-    // };
 
     const handleTooltipClose = () => {
         setOpen(false);
@@ -68,7 +48,7 @@ function Register() {
         validateAndSetValue: phoneValidateAndSetValue,
         resetValueHandler: resetPhoneHandler,
         formIsValid: phoneIsValid,
-    } = useInput((value) => /^\d{10}$/.test(value));
+    } = useInput((value) => value.trim().length !== 0);
 
     const {
         value: enteredPassword,
@@ -131,16 +111,17 @@ function Register() {
                 />
                 <PhoneInput
                     inputProps={{
-                        className: `${styles["register-input"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`,
-                        placeholder: phoneError ? "Please enter a valid phone number." : "Phone",
+                        className: `${styles["register-input"]} ${styles["phone-input"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`,
                         id: "phone",
                     }}
                     country={'ir'}
                     value={enteredPhone}
                     onChange={phoneValidateAndSetValue}
                     onBlur={phoneInputBlurHandler}
-                    searchStyle={true}
-                    autocompleteSearch={true}
+                    autoFormat={true}
+                    placeholder={phoneError ? "Please enter a valid phone number." : "Phone"}
+                    countryCodeEditable={true}
+                // buttonClass={`${styles["phone-input-button"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`}
                 />
                 <input
                     type="password"
