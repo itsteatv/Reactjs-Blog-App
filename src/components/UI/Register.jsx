@@ -2,9 +2,21 @@ import styles from "./Register.module.css"
 import useInput from "../hooks/useInput"
 import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { PiWarningCircleLight } from "react-icons/pi"
+import { useState } from "react";
 
 function Register() {
+    const [open, setOpen] = useState(false);
+
+    const handleTooltipClose = () => {
+        setOpen(false);
+    };
+
+    const handleTooltipOpen = () => {
+        setOpen(true);
+    };
+
     const {
         value: enteredFullName,
         isValid: enteredFullNameIsValid,
@@ -35,7 +47,7 @@ function Register() {
         formIsValid: phoneIsValid,
     } = useInput((value) => /^\d{10}$/.test(value));
 
-    console.log(typeof(enteredPhone));
+    console.log(typeof (enteredPhone));
 
     const {
         value: enteredPassword,
@@ -115,14 +127,24 @@ function Register() {
                     onBlur={passwordInputBlurHandler}
                 />
                 {passwordError && (
-                    <Tooltip title="Your password must be have at least
+                    <ClickAwayListener onClickAway={handleTooltipClose}>
+                        <Tooltip title="Your password must be have at least
                     8 characters long
                     1 uppercase & 1 lowercase character
-                    1 number" placement="bottom-start">
-                        <div className={styles["warn-icon-container"]}>
-                            <PiWarningCircleLight className={styles["warn-icon"]} />
-                        </div>
-                    </Tooltip>
+                    1 number" placement="bottom-start" onClose={handleTooltipClose}
+                            open={open}
+                            disableFocusListener
+                            disableHoverListener
+                            disableTouchListener
+                            PopperProps={{
+                                disablePortal: true,
+                            }}
+                        >
+                            <div className={styles["warn-icon-container"]}>
+                                <PiWarningCircleLight onClick={handleTooltipOpen} className={styles["warn-icon"]} />
+                            </div>
+                        </Tooltip>
+                    </ClickAwayListener>
                 )}
                 <input
                     type="password"
