@@ -2,6 +2,7 @@ import styles from "./Register.module.css"
 import useInput from "../hooks/useInput"
 import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
+import { PiWarningCircleLight } from "react-icons/pi"
 
 function Register() {
     const {
