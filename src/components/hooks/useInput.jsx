@@ -20,6 +20,12 @@ function useInput(validateValue) {
         setInputIsTouched(false);
     };
 
+    // This function is used to handle PhoneInput value and onChange event
+    const validateAndSetValue = (value) => {
+        setEnteredValue(value);
+        setInputIsTouched(true);
+    };
+
     const formIsValid = enteredValueIsValid && inputIsTouched;
 
     return {
@@ -30,6 +36,7 @@ function useInput(validateValue) {
         valueInputBlurHandler,
         resetValueHandler,
         formIsValid,
+        validateAndSetValue,
     };
 }
 

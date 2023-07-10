@@ -5,9 +5,31 @@ import { Tooltip } from "@mui/material";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { PiWarningCircleLight } from "react-icons/pi"
 import { useState } from "react";
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 
 function Register() {
     const [open, setOpen] = useState(false);
+    // const [enteredPhone, setEnteredPhone] = useState("");
+    // const [phoneError, setPhoneError] = useState(false);
+    // const [inputIsTouched, setInputIsTouched] = useState(false);
+
+    // const phoneChangeHandler = (value) => {
+    //     setEnteredPhone(value || "");
+    // };
+
+    // const phoneInputBlurHandler = () => {
+    //     setInputIsTouched(true);
+    // };
+
+    // const validatePhone = (value) => {
+    //     return /^\d{10}$/.test(value);
+    // };
+
+    // const resetPhoneHandler = () => {
+    //     setEnteredPhone("");
+    //     setInputIsTouched(false);
+    // };
 
     const handleTooltipClose = () => {
         setOpen(false);
@@ -43,11 +65,10 @@ function Register() {
         checkError: phoneError,
         valueChangeHandler: phoneChangeHandler,
         valueInputBlurHandler: phoneInputBlurHandler,
+        validateAndSetValue: phoneValidateAndSetValue,
         resetValueHandler: resetPhoneHandler,
         formIsValid: phoneIsValid,
     } = useInput((value) => /^\d{10}$/.test(value));
-
-    console.log(typeof (enteredPhone));
 
     const {
         value: enteredPassword,
@@ -108,14 +129,18 @@ function Register() {
                     onChange={emailChangeHandler}
                     onBlur={emailInputBlurHandler}
                 />
-                <input
-                    type="number"
-                    className={`${styles["register-input"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`}
-                    placeholder={phoneError ? "Please enter a valid phone number." : "Phone"}
-                    id="phone"
+                <PhoneInput
+                    inputProps={{
+                        className: `${styles["register-input"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`,
+                        placeholder: phoneError ? "Please enter a valid phone number." : "Phone",
+                        id: "phone",
+                    }}
+                    country={'ir'}
                     value={enteredPhone}
-                    onChange={phoneChangeHandler}
+                    onChange={phoneValidateAndSetValue}
                     onBlur={phoneInputBlurHandler}
+                    searchStyle={true}
+                    autocompleteSearch={true}
                 />
                 <input
                     type="password"
