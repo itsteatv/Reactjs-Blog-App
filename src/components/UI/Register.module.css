@@ -130,6 +130,16 @@
   animation: shake 0.5s linear;
 }
 
+.warn-icon-container {
+  position: absolute;
+}
+
+.warn-icon {
+  position: relative;
+  top: 30px;
+  left: 155px;
+}
+
 @keyframes shake {
   0%,
   100% {
@@ -153,14 +163,24 @@
 /* 375px */
 @media (max-width: 23.4375em) {
   .register-input {
-    width: 100%;
+    width: 90%;
     max-width: 352px;
   }
 
   .register-btn,
   .haveAccount-btn {
-    width: 100%;
+    width: 90%;
     max-width: 352px;
+  }
+
+  .register-alert {
+    width: 90%;
+    max-width: 352px;
+  }
+
+  .warn-icon {
+    left: 75px;
+    top: 22px;
   }
 }
 
@@ -175,5 +195,15 @@
   .haveAccount-btn {
     width: 90%;
     max-width: 352px;
+  }
+
+  .register-alert {
+    width: 90%;
+    max-width: 352px;
+  }
+
+  .warn-icon {
+    left: 65px;
+    top: 22px;
   }
 }

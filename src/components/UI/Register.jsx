@@ -1,6 +1,7 @@
 import styles from "./Register.module.css"
 import useInput from "../hooks/useInput"
 import { Link } from "react-router-dom";
+import { Tooltip } from "@mui/material";
 
 function Register() {
     const {
@@ -32,6 +33,8 @@ function Register() {
         resetValueHandler: resetPhoneHandler,
         formIsValid: phoneIsValid,
     } = useInput((value) => /^\d{10}$/.test(value));
+
+    console.log(typeof(enteredPhone));
 
     const {
         value: enteredPassword,
@@ -78,7 +81,7 @@ function Register() {
                     type="text"
                     className={`${styles["register-input"]} ${fullNameError ? `${styles.invalid} ${styles.shake}` : ""}`}
                     placeholder={fullNameError ? "Please enter a valid name." : "Full Name"}
-                    id="fullname"
+                    id="fullName"
                     value={enteredFullName}
                     onChange={fullNameChangeHandler}
                     onBlur={fullNameInputBlurHandler}
@@ -93,7 +96,7 @@ function Register() {
                     onBlur={emailInputBlurHandler}
                 />
                 <input
-                    type="text"
+                    type="number"
                     className={`${styles["register-input"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`}
                     placeholder={phoneError ? "Please enter a valid phone number." : "Phone"}
                     id="phone"
@@ -110,6 +113,16 @@ function Register() {
                     onChange={passwordChangeHandler}
                     onBlur={passwordInputBlurHandler}
                 />
+                {passwordError && (
+                    <Tooltip title="Your password must be have at least
+                    8 characters long
+                    1 uppercase & 1 lowercase character
+                    1 number" placement="bottom-start">
+                        <div className={styles["warn-icon-container"]}>
+                            <PiWarningCircleLight className={styles["warn-icon"]} />
+                        </div>
+                    </Tooltip>
+                )}
                 <input
                     type="password"
                     className={`${styles["register-input"]} ${confirmPasswordError ? `${styles.invalid} ${styles.shake}` : ""
