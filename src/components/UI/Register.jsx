@@ -6,7 +6,7 @@ import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { PiWarningCircleLight } from "react-icons/pi"
 import { useState } from "react";
 import PhoneInput from 'react-phone-input-2'
-// import 'react-phone-input-2/lib/style.css'
+import 'react-phone-input-2/lib/style.css'
 
 function Register() {
     const [open, setOpen] = useState(false);
@@ -111,14 +111,26 @@ function Register() {
                 />
                 <PhoneInput
                     inputProps={{
-                        className: `${styles["register-input"]} ${styles["phone-input"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`,
+                        className: `${styles["register-input"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`,
                         id: "phone",
                     }}
+                    buttonStyle={{
+                        position: "absolute",
+                        top: "-11px",
+                        right: "10px",
+                        bottom: "5px",
+                        background: "transparent",
+                        border: "none",
+                        borderRadius: "0"
+                    }}
                     country={'ir'}
+                    enableClickOutside={true}
+                    specialLabel=""
                     value={enteredPhone}
                     onChange={phoneValidateAndSetValue}
                     onBlur={phoneInputBlurHandler}
                     autoFormat={true}
+                    copyNumbersOnly={true}
                     placeholder={phoneError ? "Please enter a valid phone number." : "Phone"}
                     countryCodeEditable={true}
                 // buttonClass={`${styles["phone-input-button"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`}

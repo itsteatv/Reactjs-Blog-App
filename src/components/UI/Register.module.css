@@ -90,7 +90,7 @@
 }
 
 .register-input {
-  margin-bottom: 18px;
+  margin: 0 auto 18px;
   display: flex;
   width: 352px;
   height: 40px;
@@ -99,6 +99,14 @@
   justify-content: center;
   align-items: flex-start;
   gap: 10px;
+  border-radius: 10px;
+  border: 2px solid var(--input);
+  background: transparent;
+  transition: 0.55s ease-in-out;
+}
+
+.buttonClass {
+  margin-bottom: 18px;
   border-radius: 10px;
   border: 2px solid var(--input);
   background: transparent;
@@ -126,15 +134,6 @@
   border-color: red;
 }
 
-.register-input .flag-dropdown {
-  margin-left: 311px;
-  margin-bottom: 18px;
-  border-radius: 10px;
-  border: 2px solid var(--input);
-  background: transparent;
-  transition: all 0.55s ease-in-out 0s;
-}
-
 .shake {
   animation: shake 0.5s linear;
 }
@@ -148,27 +147,6 @@
   top: 30px;
   left: 155px;
 }
-
-/* .phone-input-button {
-  position: absolute;
-  left: 40px;
-  margin-bottom: 18px;
-  border-radius: 10px;
-  border: 2px solid var(--input);
-  background: transparent;
-  transition: 0.55s ease-in-out;
-}
-
-.phone-input-button:focus,
-.phone-input-button:hover {
-  outline: none;
-  box-shadow: 0 0 0 0.2em hsl(var(--bg--light)),
-    0 0 0 0.4em hsl(var(--accent--light) / 0.8);
-} */
-
-/* .register-input.phone-input {
-  width: 100%;
-} */
 
 @keyframes shake {
   0%,
@@ -212,10 +190,6 @@
     left: 75px;
     top: 22px;
   }
-
-  /* .phone-input-button {
-    margin-left: 130px;
-  } */
 
   .register-input.phone-input {
     width: 100%;
