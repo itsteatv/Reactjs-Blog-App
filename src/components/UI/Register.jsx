@@ -123,6 +123,17 @@ function Register() {
                         border: "none",
                         borderRadius: "0"
                     }}
+                    dropdownStyle={{
+                        outline: "none",
+                        boxShadow: "1px 2px 10px #00000059",
+                        backgroundColor: "#fff",
+                        maxHeight: "200px",
+                        overflowY: scroll,
+                        borderRadius: "0 0 3px 3px",
+                        width: "auto",
+                        position: "relative",
+                        margin: "auto",
+                    }}
                     country={'ir'}
                     enableClickOutside={true}
                     specialLabel=""
