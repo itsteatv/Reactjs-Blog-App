@@ -1,14 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import styles from "./Login.module.css"
 import useInput from "../hooks/useInput"
 
 function Login() {
+    const navigate = useNavigate();
+
     const {
-        value: enteredusername,
-        isValid: enteredusernameIsValid,
+        value: enteredUsername,
+        isValid: enteredUsernameIsValid,
         checkError: usernameError,
         valueChangeHandler: usernameChangeHandler,
         valueInputBlurHandler: usernameInputBlurHandler,
-        resetValueHandler: resetusernameHandler,
+        resetValueHandler: resetUsernameHandler,
         formIsValid: usernameIsValid,
     } = useInput((value) => value.trim().length !== 0);
 
@@ -22,8 +25,7 @@ function Login() {
         formIsValid: passwordIsValid,
     } = useInput((value) => /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(value));
 
-
-    const formIsValid = usernameIsValid && passwordIsValid
+    const formIsValid = usernameIsValid && passwordIsValid;
 
     const formSubmission = function (event) {
         event.preventDefault();
@@ -32,8 +34,10 @@ function Login() {
             return;
         }
 
-        resetusernameHandler();
+        resetUsernameHandler();
         resetPasswordHandler();
+
+        navigate('/home');
     };
 
     return (
@@ -45,12 +49,12 @@ function Login() {
                     className={`${styles["form-input"]} ${usernameError ? `${styles.invalid} ${styles.shake}` : ""}`}
                     placeholder={usernameError ? "Please enter a valid name." : "Username"}
                     id="username"
-                    value={enteredusername}
+                    value={enteredUsername}
                     onChange={usernameChangeHandler}
                     onBlur={usernameInputBlurHandler}
                 />
                 <input
-                    type="text"
+                    type="password"
                     className={`${styles["form-input"]} ${passwordError ? `${styles.invalid} ${styles.shake}` : ""}`}
                     placeholder={passwordError ? "Please enter a valid password." : "Password"}
                     id="password"
@@ -66,4 +70,4 @@ function Login() {
     )
 }
 
-export default Login
+export default Login;

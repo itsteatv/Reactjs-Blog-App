@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useState } from "react"
 import styles from "./Navbar.module.css"
 import ThemeSwitcher from "../Theme Switcher/ThemeSwitcher";
@@ -20,7 +20,7 @@ function Navbar() {
                             <NavLink to="/About" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>About</NavLink>
                             <NavLink to="/Contact" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Contact</NavLink>
                             <NavLink to="/Write" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Write</NavLink>
-                            <NavLink to="/Register" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Register</NavLink>
+                            <Link to="/">Logout</Link>
                         </ul>
                     </nav>
                     <div className={`${styles.mobileMenuToggle} ${isMobileMenuOpen ? styles.open : ""
