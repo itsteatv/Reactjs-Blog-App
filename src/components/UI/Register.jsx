@@ -111,7 +111,7 @@ function Register() {
                 />
                 <PhoneInput
                     inputProps={{
-                        className: `${styles["register-input"]} ${styles["selected-flag"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`,
+                        className: `${styles["register-input"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`,
                         id: "phone",
 
                     }}
@@ -145,7 +145,6 @@ function Register() {
                     copyNumbersOnly={true}
                     placeholder={phoneError ? "Please enter a valid phone number." : "Phone"}
                     countryCodeEditable={true}
-                // buttonClass={`${styles["phone-input-button"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`}
                 />
                 <input
                     type="password"
@@ -187,7 +186,7 @@ function Register() {
                     onBlur={confirmPasswordInputBlurHandler}
                 />
                 <button type="submit" className={`${styles["register-btn"]} ${styles.btn}`} disabled={!formIsValid}>
-                    <span className={styles["registerText"]}>Register</span>
+                    <Link to="/Home" className={styles["registerText"]}>Register</Link>
                 </button>
                 <button type="submit" className={`${styles["haveAccount-btn"]} ${styles.btn} ${styles.btn2}`} disabled={!formIsValid}>
                     <Link to="/login" className={styles["registerText"]}>have account ? sign in</Link>
