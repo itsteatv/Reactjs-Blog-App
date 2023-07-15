@@ -1,14 +1,14 @@
-import { NavLink, Link } from "react-router-dom";
-import { useState } from "react"
-import styles from "./Navbar.module.css"
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import styles from "./Navbar.module.css";
 import ThemeSwitcher from "../Theme Switcher/ThemeSwitcher";
 
 function Navbar() {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const toggleMobileMenu = function () {
-        setIsMobileMenuOpen((prevState) => !prevState)
-    }
+        setIsMobileMenuOpen((prevState) => !prevState);
+    };
 
     return (
         <>
@@ -20,7 +20,7 @@ function Navbar() {
                             <NavLink to="/About" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>About</NavLink>
                             <NavLink to="/Contact" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Contact</NavLink>
                             <NavLink to="/Write" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Write</NavLink>
-                            <Link to="/">Logout</Link>
+                            <NavLink to="/register" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Register</NavLink>
                         </ul>
                     </nav>
                     <div className={`${styles.mobileMenuToggle} ${isMobileMenuOpen ? styles.open : ""
@@ -33,7 +33,7 @@ function Navbar() {
                 {!isMobileMenuOpen ? <ThemeSwitcher /> : ""}
             </header>
         </>
-    )
+    );
 }
 
-export default Navbar
+export default Navbar;
