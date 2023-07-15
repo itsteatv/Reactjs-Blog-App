@@ -5,8 +5,8 @@ import { Tooltip } from "@mui/material";
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import { PiWarningCircleLight } from "react-icons/pi"
 import { useState } from "react";
-import PhoneInput from 'react-phone-input-2'
-import 'react-phone-input-2/lib/style.css'
+// import PhoneInput from 'react-phone-input-2'
+// import 'react-phone-input-2/lib/style.css'
 
 function Register() {
     const [open, setOpen] = useState(false);
@@ -39,16 +39,16 @@ function Register() {
         formIsValid: emailIsValid,
     } = useInput((value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
 
-    const {
-        value: enteredPhone,
-        isValid: enteredPhoneIsValid,
-        checkError: phoneError,
-        valueChangeHandler: phoneChangeHandler,
-        valueInputBlurHandler: phoneInputBlurHandler,
-        validateAndSetValue: phoneValidateAndSetValue,
-        resetValueHandler: resetPhoneHandler,
-        formIsValid: phoneIsValid,
-    } = useInput((value) => /((0?9)|(\+?989))((14)|(13)|(12)|(19)|(18)|(17)|(15)|(16)|(11)|(10)|(90)|(91)|(92)|(93)|(94)|(95)|(96)|(32)|(30)|(33)|(35)|(36)|(37)|(38)|(39)|(00)|(01)|(02)|(03)|(04)|(05)|(41)|(20)|(21)|(22)|(23)|(31)|(34)|(9910)|(9911)|(9913)|(9914)|(9999)|(999)|(990)|(9810)|(9811)|(9812)|(9813)|(9814)|(9815)|(9816)|(9817)|(998))\W?\d{3}\W?\d{4}/g.test(value.trim()));
+    // const {
+    //     value: enteredPhone,
+    //     isValid: enteredPhoneIsValid,
+    //     checkError: phoneError,
+    //     valueChangeHandler: phoneChangeHandler,
+    //     valueInputBlurHandler: phoneInputBlurHandler,
+    //     validateAndSetValue: phoneValidateAndSetValue,
+    //     resetValueHandler: resetPhoneHandler,
+    //     formIsValid: phoneIsValid,
+    // } = useInput((value) => /((0?9)|(\+?989))((14)|(13)|(12)|(19)|(18)|(17)|(15)|(16)|(11)|(10)|(90)|(91)|(92)|(93)|(94)|(95)|(96)|(32)|(30)|(33)|(35)|(36)|(37)|(38)|(39)|(00)|(01)|(02)|(03)|(04)|(05)|(41)|(20)|(21)|(22)|(23)|(31)|(34)|(9910)|(9911)|(9913)|(9914)|(9999)|(999)|(990)|(9810)|(9811)|(9812)|(9813)|(9814)|(9815)|(9816)|(9817)|(998))\W?\d{3}\W?\d{4}/g.test(value.trim()));
 
     const {
         value: enteredPassword,
@@ -71,7 +71,7 @@ function Register() {
     } = useInput((value) => value === enteredPassword);
 
     const formIsValid =
-        fullNameIsValid && emailIsValid && phoneIsValid && passwordIsValid && confirmPasswordIsValid;
+        fullNameIsValid && emailIsValid && passwordIsValid && confirmPasswordIsValid;
 
     const formSubmission = function (event) {
         event.preventDefault();
@@ -82,7 +82,7 @@ function Register() {
 
         resetFullNameHandler();
         resetEmailHandler();
-        resetPhoneHandler();
+        // resetPhoneHandler();
         resetPasswordHandler();
         resetConfirmPasswordHandler();
     };
@@ -109,7 +109,7 @@ function Register() {
                     onChange={emailChangeHandler}
                     onBlur={emailInputBlurHandler}
                 />
-                <PhoneInput
+                {/* <PhoneInput
                     inputProps={{
                         className: `${styles["register-input"]} ${phoneError ? `${styles.invalid} ${styles.shake}` : ""}`,
                         id: "phone",
@@ -145,7 +145,7 @@ function Register() {
                     copyNumbersOnly={true}
                     placeholder={phoneError ? "Please enter a valid phone number." : "Phone"}
                     countryCodeEditable={true}
-                />
+                /> */}
                 <input
                     type="password"
                     className={`${styles["register-input"]} ${passwordError ? `${styles.invalid} ${styles.shake}` : ""}`}
@@ -186,7 +186,7 @@ function Register() {
                     onBlur={confirmPasswordInputBlurHandler}
                 />
                 <button type="submit" className={`${styles["register-btn"]} ${styles.btn}`} disabled={!formIsValid}>
-                    <Link to="/Home" className={styles["registerText"]}>Register</Link>
+                    <span className={styles["registerText"]}>Register</span>
                 </button>
                 <button type="submit" className={`${styles["haveAccount-btn"]} ${styles.btn} ${styles.btn2}`} disabled={!formIsValid}>
                     <Link to="/login" className={styles["registerText"]}>have account ? sign in</Link>
