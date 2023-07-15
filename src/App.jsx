@@ -1,5 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/Header/Header";
 import SinglePost from "./components/SinglePost/SinglePost";
@@ -10,25 +9,19 @@ import Login from "./components/UI/Login";
 import Register from './components/UI/Register';
 
 function App() {
-  const [isRegistered, setIsRegistered] = useState(false);
-
-  const handleRegister = () => {
-    setIsRegistered(true);
-  };
-
   return (
     <BrowserRouter>
       <Navbar />
       <ScrollToTop>
         <Routes>
-          <Route path="/" element={isRegistered ? <Navigate to="/Home" /> : <Register onRegister={handleRegister} />} />
-          <Route path="/Home" element={
+          <Route path="/" element={
             <>
               <Header />
               <Posts />
             </>
           } />
           <Route path="/post/:id" element={<SinglePost />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="*" element={<Error />} />
         </Routes>
