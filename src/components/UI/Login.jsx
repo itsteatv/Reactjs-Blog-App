@@ -1,10 +1,7 @@
-import { useNavigate } from 'react-router-dom';
 import styles from "./Login.module.css"
 import useInput from "../hooks/useInput"
 
 function Login() {
-    const navigate = useNavigate();
-
     const {
         value: enteredUsername,
         isValid: enteredUsernameIsValid,
@@ -36,8 +33,6 @@ function Login() {
 
         resetUsernameHandler();
         resetPasswordHandler();
-
-        navigate('/home');
     };
 
     return (
