@@ -144,7 +144,6 @@
 
 .warn-icon {
   position: relative;
-  top: 30px;
   left: 155px;
 }
 
@@ -188,7 +187,7 @@
 
   .warn-icon {
     left: 75px;
-    top: 22px;
+    top: -8px;
   }
 
   .register-input.phone-input {
@@ -217,7 +216,7 @@
 
   .warn-icon {
     left: 65px;
-    top: 22px;
+    top: -8px;
   }
 
   .register-input.phone-input {
