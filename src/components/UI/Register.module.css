@@ -41,6 +41,7 @@
   gap: 10px;
   border-radius: 20px;
   transition: 0.55s ease-in-out;
+  cursor: pointer;
 }
 
 .register-btn {
@@ -103,6 +104,7 @@
   border: 2px solid var(--input);
   background: transparent;
   transition: 0.55s ease-in-out;
+  cursor: pointer;
 }
 
 .buttonClass {
@@ -144,6 +146,16 @@
 
 .warn-icon {
   position: relative;
+  left: 155px;
+}
+
+.password-visibility-button {
+  position: absolute;
+}
+
+.visibility-icon {
+  position: relative;
+  top: 58px;
   left: 155px;
 }
 
@@ -190,9 +202,10 @@
     top: -8px;
   }
 
-  .register-input.phone-input {
-    width: 100%;
-    max-width: 352px;
+  .visibility-icon {
+    position: relative;
+    top: 50px;
+    left: 75px;
   }
 }
 
@@ -219,8 +232,9 @@
     top: -8px;
   }
 
-  .register-input.phone-input {
-    width: 100%;
-    max-width: 352px;
+  .visibility-icon {
+    position: relative;
+    top: 50px;
+    left: 65px;
   }
 }

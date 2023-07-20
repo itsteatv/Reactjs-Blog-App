@@ -43,6 +43,7 @@
   border-radius: 20px;
   background: var(--button);
   transition: 0.55s ease-in-out;
+  cursor: pointer;
 }
 
 .btn-primary:focus,
