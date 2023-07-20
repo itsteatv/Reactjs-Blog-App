@@ -1,15 +1,23 @@
-import styles from "./Register.module.css"
-import useInput from "../hooks/useInput"
+import { PiWarningCircleLight } from "react-icons/pi"
+import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
+import styles from "./Register.module.css"
+import useInput from "../hooks/useInput"
 import ClickAwayListener from '@mui/material/ClickAwayListener';
-import { PiWarningCircleLight } from "react-icons/pi"
-import { useState } from "react";
+import Cookies from "js-cookie";
+import { useDispatch } from "react-redux";
+import { register } from "../store/registerSlice"
 // import PhoneInput from 'react-phone-input-2'
 // import 'react-phone-input-2/lib/style.css'
 
 function Register() {
     const [open, setOpen] = useState(false);
+    const [error, setError] = useState(null);
+    const [showPassword, setShowPassword] = useState(false)
+    const [registerSuccess, setRegisterSuccess] = useState(false);
+    const dispatch = useDispatch();
 
     const handleTooltipClose = () => {
         setOpen(false);
@@ -18,6 +26,10 @@ function Register() {
     const handleTooltipOpen = () => {
         setOpen(true);
     };
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prevState) => !prevState)
+    }
 
     const {
         value: enteredFullName,
@@ -73,11 +85,50 @@ function Register() {
     const formIsValid =
         fullNameIsValid && emailIsValid && passwordIsValid && confirmPasswordIsValid;
 
-    const formSubmission = function (event) {
+    const formSubmission = async function (event) {
         event.preventDefault();
 
         if (!formIsValid) {
             return;
+        }
+
+        try {
+            const response = await fetch("https://neisiali.ir/api/register", {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    // Authorization: authHeader,
+                },
+                body: JSON.stringify({
+                    name: enteredFullName,
+                    email: enteredEmail,
+                    password: enteredPassword,
+                    password_confirmation: enteredConfirmPassword,
+                })
+            });
+
+            const responseData = await response.json()
+            const token = responseData.data.token;
+            // const authHeader = `bearer ${token}`;
+
+            const expirationDate = new Date();
+            expirationDate.setDate(expirationDate.getDate() + 7);
+
+            Cookies.set("token", token, { expires: expirationDate });
+
+            dispatch(register());
+            setRegisterSuccess(true)
+
+            console.log(responseData);
+            console.log(responseData.data.token);
+            console.log(token);
+
+            if (!response.ok) {
+                throw new Error("Failed to create account.");
+            }
+        } catch (error) {
+            setError(error.message);
         }
 
         resetFullNameHandler();
@@ -176,7 +227,7 @@ function Register() {
                     </ClickAwayListener>
                 )}
                 <input
-                    type="password"
+                    type={showPassword ? "text" : "password"}
                     className={`${styles["register-input"]} ${confirmPasswordError ? `${styles.invalid} ${styles.shake}` : ""
                         }`}
                     placeholder={confirmPasswordError ? "Passwords do not match." : "Confirm Password"}
@@ -185,6 +236,15 @@ function Register() {
                     onChange={confirmPasswordChangeHandler}
                     onBlur={confirmPasswordInputBlurHandler}
                 />
+                <span
+                    className={styles["password-visibility-button"]}
+                    onClick={togglePasswordVisibility}
+                >
+                    {showPassword ? <AiFillEyeInvisible className={styles["visibility-icon"]} /> : <AiFillEye className={styles["visibility-icon"]} />}
+                </span>
+
+                {error && <p className={styles["registerText"]}>{error}</p>}
+                {registerSuccess && <p>Account Created Successfully</p>}
                 <button type="submit" className={`${styles["register-btn"]} ${styles.btn}`} disabled={!formIsValid}>
                     <span className={styles["registerText"]}>Register</span>
                 </button>
