@@ -140,6 +140,7 @@ body {
   /* For Firefox */
   -ms-overflow-style: none;
   /* For Internet Explorer and Edge */
+  touch-action: pan-y pan-x;
 }
 
 body::-webkit-scrollbar {
