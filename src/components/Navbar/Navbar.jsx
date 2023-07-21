@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -12,6 +12,7 @@ function Navbar() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
     const isRegistered = useSelector((state) => state.register.isRegistered)
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const toggleMobileMenu = function () {
         setIsMobileMenuOpen((prevState) => !prevState);
@@ -20,6 +21,7 @@ function Navbar() {
     const handleLogout = () => {
         dispatch(logoutAndResetRegistration());
         clearTokenCookie();
+        navigate("/");
     };
 
     return (
