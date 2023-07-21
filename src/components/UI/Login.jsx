@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice"
 import styles from "./Login.module.css"
@@ -10,7 +9,6 @@ function Login() {
     const [error, setError] = useState(null)
     const [loginSuccess, setLoginSuccess] = useState(false);
     const dispatch = useDispatch();
-    // const navigate = useNavigate();
 
     const {
         value: enteredEmail,
@@ -52,6 +50,11 @@ function Login() {
             });
 
             const responseData = await response.json()
+
+            if (!responseData.data || !responseData.data.token) {
+                throw new Error("Unexpected response from the server.");
+            }
+
             const token = responseData.data.token;
             const authHeader = `bearer ${token}`;
 
@@ -67,13 +70,12 @@ function Login() {
             setLoginSuccess(true);
 
             if (!response.ok) {
-                throw new Error("Failed to log in.");
+                if (response.status === 422) {
+                    throw new Error("Invalid email or password.");
+                } else {
+                    throw new Error("Failed to log in.");
+                }
             }
-
-            if (response.status === 422) {
-                throw new Error("Failed to authorize account.")
-            }
-
 
         } catch (error) {
             setError(error.message);
@@ -110,10 +112,10 @@ function Login() {
                     onBlur={passwordInputBlurHandler}
                 />
                 {loginSuccess && <p>Login was successful!</p>}
-                {error && <p className={styles["registerText"]}>{error}</p>}
                 <button type="submit" className={styles["btn-primary"]} disabled={!formIsValid}>
                     <span className={styles["loginText"]}>Login</span>
                 </button>
+                {error && <p>{error}</p>}
             </form>
         </section>
     )
