@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { login } from "../store/authSlice"
+import { ToastContainer, toast } from "react-toastify";
 import styles from "./Login.module.css"
 import useInput from "../hooks/useInput"
 import Cookies from "js-cookie";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
-    const [error, setError] = useState(null)
-    const [loginSuccess, setLoginSuccess] = useState(false);
     const dispatch = useDispatch();
 
     const {
@@ -51,12 +51,12 @@ function Login() {
 
             const responseData = await response.json()
 
-            if (!responseData.data || !responseData.data.token) {
+            if (!responseData.data || !responseData.data.token || response.status === 422) {
                 throw new Error("Unexpected response from the server.");
             }
 
             const token = responseData.data.token;
-            const authHeader = `bearer ${token}`;
+            // const authHeader = `bearer ${token}`;
 
             const expirationDate = new Date();
             expirationDate.setDate(expirationDate.getDate() + 7);
@@ -67,18 +67,15 @@ function Login() {
             console.log(token);
 
             dispatch(login())
-            setLoginSuccess(true);
+            toast.success("Login was successful!");
 
             if (!response.ok) {
-                if (response.status === 422) {
-                    throw new Error("Invalid email or password.");
-                } else {
-                    throw new Error("Failed to log in.");
-                }
+                throw new Error("Failed to log in.");
             }
+        }
 
-        } catch (error) {
-            setError(error.message);
+        catch (error) {
+            toast.error('An error occurred: ' + error.message);
         }
 
         if (!formIsValid) {
@@ -91,6 +88,7 @@ function Login() {
 
     return (
         <section aria-label="Login" className={styles.login}>
+            <ToastContainer limit={1} />
             <form onSubmit={formSubmission} className={styles["form-container"]}>
                 <h1 className={styles["form-title"]}>Login</h1>
                 <input
@@ -111,11 +109,9 @@ function Login() {
                     onChange={passwordChangeHandler}
                     onBlur={passwordInputBlurHandler}
                 />
-                {loginSuccess && <p>Login was successful!</p>}
                 <button type="submit" className={styles["btn-primary"]} disabled={!formIsValid}>
                     <span className={styles["loginText"]}>Login</span>
                 </button>
-                {error && <p>{error}</p>}
             </form>
         </section>
     )
