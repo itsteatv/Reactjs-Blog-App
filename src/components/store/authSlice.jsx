@@ -1,10 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit"
 import Cookies from "js-cookie";
 import { resetRegistration } from "./registerSlice";
+import { CiLogout } from "react-icons/ci";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const initialState = {
     isLoggedIn: !!Cookies.get("token"),
 }
+
+const logoutIcon = <CiLogout />;
 
 const authSlice = createSlice({
     name: "auth",
@@ -15,6 +20,9 @@ const authSlice = createSlice({
         },
         logout(state) {
             state.isLoggedIn = false;
+            toast.info("You Logged Out", {
+                icon: logoutIcon
+            });
         },
     },
 })
