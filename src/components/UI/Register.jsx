@@ -243,7 +243,7 @@ function Register() {
                     {showPassword ? <AiFillEyeInvisible className={styles["visibility-icon"]} /> : <AiFillEye className={styles["visibility-icon"]} />}
                 </span>
 
-                {error && <p className={styles["registerText"]}>{error}</p>}
+                {error && <p>{error}</p>}
                 {registerSuccess && <p>Account Created Successfully</p>}
                 <button type="submit" className={`${styles["register-btn"]} ${styles.btn}`} disabled={!formIsValid}>
                     <span className={styles["registerText"]}>Register</span>
