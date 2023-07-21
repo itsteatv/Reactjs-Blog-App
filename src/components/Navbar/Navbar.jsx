@@ -27,7 +27,7 @@ function Navbar() {
 
     return (
         <>
-            <ToastContainer />
+            <ToastContainer limit={1} />
             <header className={styles.header}>
                 <div className={styles.container}>
                     <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
