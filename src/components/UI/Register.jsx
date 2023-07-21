@@ -144,7 +144,6 @@ function Register() {
 
     return (
         <section aria-label="Register" className={styles.register}>
-            <ToastContainer limit={1} />
             <form onSubmit={formSubmission} className={styles["form-container"]}>
                 <h1 className={styles["form-title"]}>Register</h1>
                 <input

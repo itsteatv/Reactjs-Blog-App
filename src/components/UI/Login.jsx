@@ -88,7 +88,6 @@ function Login() {
 
     return (
         <section aria-label="Login" className={styles.login}>
-            <ToastContainer limit={1} />
             <form onSubmit={formSubmission} className={styles["form-container"]}>
                 <h1 className={styles["form-title"]}>Login</h1>
                 <input
