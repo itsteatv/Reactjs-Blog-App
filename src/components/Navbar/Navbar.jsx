@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { clearTokenCookie, logout } from "../store/authSlice";
 import { logoutAndResetRegistration } from "../store/authSlice";
+import { ToastContainer } from "react-toastify";
 import styles from "./Navbar.module.css";
 import ThemeSwitcher from "../Theme Switcher/ThemeSwitcher";
 
@@ -21,11 +22,12 @@ function Navbar() {
     const handleLogout = () => {
         dispatch(logoutAndResetRegistration());
         clearTokenCookie();
-        navigate("/");
+        navigate('/');
     };
 
     return (
         <>
+            <ToastContainer />
             <header className={styles.header}>
                 <div className={styles.container}>
                     <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
