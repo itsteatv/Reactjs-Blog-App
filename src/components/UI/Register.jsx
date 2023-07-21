@@ -3,20 +3,18 @@ import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@mui/material";
+import { register } from "../store/registerSlice"
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 import styles from "./Register.module.css"
 import useInput from "../hooks/useInput"
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Cookies from "js-cookie";
-import { useDispatch } from "react-redux";
-import { register } from "../store/registerSlice"
-// import PhoneInput from 'react-phone-input-2'
-// import 'react-phone-input-2/lib/style.css'
+import "react-toastify/dist/ReactToastify.css";
 
 function Register() {
     const [open, setOpen] = useState(false);
-    const [error, setError] = useState(null);
     const [showPassword, setShowPassword] = useState(false)
-    const [registerSuccess, setRegisterSuccess] = useState(false);
     const dispatch = useDispatch();
 
     const handleTooltipClose = () => {
@@ -109,6 +107,11 @@ function Register() {
             });
 
             const responseData = await response.json()
+
+            if (!responseData.data || !responseData.data.token || response.status === 422) {
+                throw new Error("Unexpected response from the server.");
+            }
+
             const token = responseData.data.token;
             // const authHeader = `bearer ${token}`;
 
@@ -117,8 +120,9 @@ function Register() {
 
             Cookies.set("token", token, { expires: expirationDate });
 
+
             dispatch(register());
-            setRegisterSuccess(true)
+            toast.success("Account Created Successfully");
 
             console.log(responseData);
             console.log(responseData.data.token);
@@ -128,7 +132,7 @@ function Register() {
                 throw new Error("Failed to create account.");
             }
         } catch (error) {
-            setError(error.message);
+            toast.error('An error occurred: ' + error.message);
         }
 
         resetFullNameHandler();
@@ -140,6 +144,7 @@ function Register() {
 
     return (
         <section aria-label="Register" className={styles.register}>
+            <ToastContainer limit={1} />
             <form onSubmit={formSubmission} className={styles["form-container"]}>
                 <h1 className={styles["form-title"]}>Register</h1>
                 <input
@@ -243,8 +248,6 @@ function Register() {
                     {showPassword ? <AiFillEyeInvisible className={styles["visibility-icon"]} /> : <AiFillEye className={styles["visibility-icon"]} />}
                 </span>
 
-                {error && <p>{error}</p>}
-                {registerSuccess && <p>Account Created Successfully</p>}
                 <button type="submit" className={`${styles["register-btn"]} ${styles.btn}`} disabled={!formIsValid}>
                     <span className={styles["registerText"]}>Register</span>
                 </button>
