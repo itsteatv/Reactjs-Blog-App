@@ -1,23 +1,33 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { clearTokenCookie, logout } from "../store/authSlice";
 import { logoutAndResetRegistration } from "../store/authSlice";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import { fetchUserData } from '../store/userSlice';
 import styles from "./Navbar.module.css";
 import ThemeSwitcher from "../Theme Switcher/ThemeSwitcher";
 
 function Navbar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-    const isRegistered = useSelector((state) => state.register.isRegistered)
+    const isRegistered = useSelector((state) => state.register.isRegistered);
+    const { data: userData, loading, error } = useSelector((state) => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const toggleMobileMenu = function () {
         setIsMobileMenuOpen((prevState) => !prevState);
     };
+
+    useEffect(() => {
+        if (isLoggedIn || isRegistered) {
+            dispatch(fetchUserData()).catch((error) => {
+                toast.error(error.message)
+            });
+        }
+    }, [dispatch, isLoggedIn, isRegistered]);
 
     const handleLogout = () => {
         dispatch(logoutAndResetRegistration());
@@ -33,11 +43,10 @@ function Navbar() {
                     <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
                         <ul className={styles.menu}>
                             <NavLink to="/" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Home</NavLink>
-                            <NavLink to="/About" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>About</NavLink>
-                            <NavLink to="/register" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Register</NavLink>
+                            {!isLoggedIn && !isRegistered && <NavLink to="/register">Register</NavLink>}
                             {(isLoggedIn || isRegistered) && (
                                 <>
-                                    <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>dashboard</NavLink>
+                                    <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>{userData ? userData.name : "dashboard"}</NavLink>
                                     <button className={styles.linkStyle} onClick={handleLogout}>Logout</button>
                                 </>
                             )}
