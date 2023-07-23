@@ -83,6 +83,7 @@ function Register() {
     const formIsValid =
         fullNameIsValid && emailIsValid && passwordIsValid && confirmPasswordIsValid;
 
+
     const formSubmission = async function (event) {
         event.preventDefault();
 
@@ -90,13 +91,15 @@ function Register() {
             return;
         }
 
+        const authHeader = `Bearer ${Cookies.get("token")}`;
+
         try {
             const response = await fetch("https://neisiali.ir/api/register", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
-                    // Authorization: authHeader,
+                    Authorization: authHeader,
                 },
                 body: JSON.stringify({
                     name: enteredFullName,
@@ -113,7 +116,7 @@ function Register() {
             }
 
             const token = responseData.data.token;
-            // const authHeader = `bearer ${token}`;
+            const userData = responseData.data.user;
 
             const expirationDate = new Date();
             expirationDate.setDate(expirationDate.getDate() + 7);
@@ -125,6 +128,7 @@ function Register() {
             toast.success("Account Created Successfully");
 
             console.log(responseData);
+            console.log(responseData.data.user);
             console.log(responseData.data.token);
             console.log(token);
 

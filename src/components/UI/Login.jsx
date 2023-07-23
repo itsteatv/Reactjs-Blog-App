@@ -35,13 +35,15 @@ function Login() {
     const formSubmission = async function (event) {
         event.preventDefault();
 
+        const authHeader = `Bearer ${Cookies.get("token")}`;
+
         try {
             const response = await fetch("https://neisiali.ir/api/login", {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
                     "Content-Type": "application/json",
-                    // Authorization: authHeader,
+                    Authorization: authHeader,
                 },
                 body: JSON.stringify({
                     email: enteredEmail,
@@ -56,7 +58,6 @@ function Login() {
             }
 
             const token = responseData.data.token;
-            // const authHeader = `bearer ${token}`;
 
             const expirationDate = new Date();
             expirationDate.setDate(expirationDate.getDate() + 7);
