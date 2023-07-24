@@ -1,0 +1,43 @@
+.user-profile-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 35px;
+  width: 90%;
+  max-width: 458px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid var(--border-txt);
+  text-align: center;
+  padding: 3rem;
+}
+
+.user-profile {
+  width: 20%;
+  height: 20%;
+}
+
+.user {
+  font-size: clamp(0.75rem, 0.8vw + 0.7rem, 1.25rem);
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 40px;
+}
+
+.username {
+  font-family: "Inter";
+  font-weight: bold;
+  font-size: clamp(1rem, 0.8vw + 0.9rem, 1.5rem);
+  margin: 1rem auto;
+}
+
+/* 350px */
+@media (max-width: 21.875em) {
+  .user-profile-container {
+    padding: 1rem;
+  }
+}
