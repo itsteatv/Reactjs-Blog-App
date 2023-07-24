@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { fetchUserData } from '../store/userSlice';
+import { Link } from "react-router-dom"
 import styles from "./Dashboard.module.css"
 import userProfile from "../../assets/UsersProfile/userProfile.png"
 
@@ -28,6 +29,7 @@ function Dashboard() {
                         <p className={`${styles["user-email"]} ${styles.user}`}>Email: {userData.email}</p>
                         <p className={`${styles["user-id"]} ${styles.user}`}>ID: {userData.id}</p>
                         <p className={`${styles["user-created-at"]} ${styles.user}`}>Created At: {userData.created_at}</p>
+                        <Link className={styles["update-profile"]} to="/setting">update profile</Link>
                     </section>
                 </>
             ) : null}

@@ -35,6 +35,15 @@
   margin: 1rem auto;
 }
 
+.update-profile {
+  text-decoration: none;
+  display: flex;
+  padding: 10px 25px;
+  background: rgba(75, 107, 251, 0.05);
+  border-radius: 1rem;
+  margin-top: 2rem;
+}
+
 /* 350px */
 @media (max-width: 21.875em) {
   .user-profile-container {
