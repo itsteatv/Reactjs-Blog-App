@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { fetchUserData } from '../store/userSlice';
+import styles from "./Dashboard.module.css"
+import userProfile from "../../assets/UsersProfile/userProfile.png"
 
 function Dashboard() {
     const dispatch = useDispatch();
@@ -17,17 +19,16 @@ function Dashboard() {
 
     return (
         <div>
-            {loading ? (
-                <p>Loading user data...</p>
-            ) : error ? (
-                <p>Error: {error}</p>
-            ) : userData ? (
+            {userData ? (
                 <>
-                    <h2>Welcome, {userData.name}!</h2>
-                    <h2>Username, {userData.username}!</h2>
-                    <p>Email: {userData.email}</p>
-                    <p>ID: {userData.id}</p>
-                    <p>Created At: {userData.created_at}</p>
+                    <section className={styles["user-profile-container"]}>
+                        <img className={styles["user-profile"]} src={userProfile} alt="user profile" />
+                        <h1 className={styles["username"]}>Welcome, {userData.name}</h1>
+                        <h6 className={`${styles["user-name"]} ${styles.user}`}>Username: {userData.username}</h6>
+                        <p className={`${styles["user-email"]} ${styles.user}`}>Email: {userData.email}</p>
+                        <p className={`${styles["user-id"]} ${styles.user}`}>ID: {userData.id}</p>
+                        <p className={`${styles["user-created-at"]} ${styles.user}`}>Created At: {userData.created_at}</p>
+                    </section>
                 </>
             ) : null}
         </div>
