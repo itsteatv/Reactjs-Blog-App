@@ -67,6 +67,27 @@ header {
   transform: scaleX(1) scaleY(0.5);
 }
 
+.registerText {
+  text-decoration: none;
+  color: var(--secondary-color);
+  font-size: 15px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.logout-icon {
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  scale: 1.7;
+}
+
 /* Mobile Menu */
 
 @media (max-width: 45em) {

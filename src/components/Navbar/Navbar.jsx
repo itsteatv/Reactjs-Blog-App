@@ -6,6 +6,7 @@ import { clearTokenCookie, logout } from "../store/authSlice";
 import { logoutAndResetRegistration } from "../store/authSlice";
 import { ToastContainer, toast } from "react-toastify";
 import { fetchUserData } from '../store/userSlice';
+import { CiLogout } from "react-icons/ci"
 import styles from "./Navbar.module.css";
 import ThemeSwitcher from "../Theme Switcher/ThemeSwitcher";
 
@@ -43,11 +44,11 @@ function Navbar() {
                     <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.open : ""}`}>
                         <ul className={styles.menu}>
                             <NavLink to="/" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Home</NavLink>
-                            {!isLoggedIn && !isRegistered && <NavLink to="/register">Register</NavLink>}
+                            {!isLoggedIn && !isRegistered && <NavLink to="/register" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>Register</NavLink>}
                             {(isLoggedIn || isRegistered) && (
                                 <>
                                     <NavLink to="/dashboard" className={({ isActive }) => (isActive ? styles.linkStyle : styles.inActive)}>{userData ? userData.name : "dashboard"}</NavLink>
-                                    <button className={styles.linkStyle} onClick={handleLogout}>Logout</button>
+                                    <button onClick={handleLogout} style={{ background: "transparent", border: "none" }}> <CiLogout className={styles["logout-icon"]} /> </button>
                                 </>
                             )}
                         </ul>
