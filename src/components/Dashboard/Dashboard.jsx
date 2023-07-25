@@ -29,7 +29,11 @@ function Dashboard() {
                         <p className={`${styles["user-email"]} ${styles.user}`}>Email: {userData.email}</p>
                         <p className={`${styles["user-id"]} ${styles.user}`}>ID: {userData.id}</p>
                         <p className={`${styles["user-created-at"]} ${styles.user}`}>Created At: {userData.created_at}</p>
-                        <Link className={styles["update-profile"]} to="/setting">update profile</Link>
+                        <Link className={styles["update-profile"]} to="/setting">
+                            <span className={styles["update-profile-span"]}>
+                                update profile
+                            </span>
+                        </Link>
                     </section>
                 </>
             ) : null}

@@ -8,6 +8,7 @@ import Error from "./components/Error/Error";
 import Login from "./components/UI/Login";
 import Register from './components/UI/Register';
 import Dashboard from "./components/Dashboard/Dashboard";
+import UpdateProfile from "./components/Dashboard/UpdateProfile"
 import { useSelector } from 'react-redux';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             }
           />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/setting" element={<UpdateProfile />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </ScrollToTop>

@@ -44,6 +44,15 @@
   margin-top: 2rem;
 }
 
+.update-profile-span {
+  font-family: "Work Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  color: #4b6bfb;
+}
+
 /* 350px */
 @media (max-width: 21.875em) {
   .user-profile-container {
