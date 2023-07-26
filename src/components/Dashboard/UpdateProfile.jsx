@@ -43,6 +43,8 @@ function UpdateProfile() {
         }
     }, [userData]);
 
+    console.log(userData);
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -97,7 +99,7 @@ function UpdateProfile() {
                             placeholder="Your Name"
                         />
 
-                        {/* <input
+                        <input
                             type="text"
                             id="username"
                             name="username"
@@ -106,7 +108,7 @@ function UpdateProfile() {
                             value={formData.username}
                             onChange={handleChange}
                             placeholder="Your Username"
-                        /> */}
+                        />
 
                         <input
                             type="email"

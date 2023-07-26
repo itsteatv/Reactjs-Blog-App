@@ -4,7 +4,6 @@ import { toast } from 'react-toastify';
 import { fetchUserData } from '../store/userSlice';
 import { Link } from 'react-router-dom';
 import styles from './Dashboard.module.css';
-import userProfile from '../../assets/UsersProfile/userProfile.png';
 import Skeleton from '@mui/material/Skeleton';
 import ResultPage from '../UI/ResultPage';
 
@@ -35,7 +34,7 @@ function Dashboard() {
             ) : userData ? (
                 <>
                     <section className={styles['user-profile-container']}>
-                        <img className={styles['user-profile']} src={userProfile} alt="user profile" />
+                        <img className={styles['user-profile']} src={userData.image} alt="user profile" />
                         <h1 className={styles['username']}>Welcome, {userData.name}</h1>
                         <h6 className={`${styles['user-name']} ${styles.user}`}>Username: {userData.username}</h6>
                         <p className={`${styles['user-email']} ${styles.user}`}>Email: {userData.email}</p>

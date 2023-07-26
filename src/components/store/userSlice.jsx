@@ -14,6 +14,8 @@ const fetchUserData = createAsyncThunk('user/fetchUserData', async (_, { getStat
 
     const responseData = await response.json();
 
+    console.log(responseData.message);
+
     if (!response.ok || !responseData || !responseData.message) {
         throw new Error('Failed to fetch user data.');
     }
