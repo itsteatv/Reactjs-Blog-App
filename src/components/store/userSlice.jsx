@@ -14,11 +14,11 @@ const fetchUserData = createAsyncThunk('user/fetchUserData', async (_, { getStat
 
     const responseData = await response.json();
 
-    if (!response.ok || !responseData || !responseData.data) {
+    if (!response.ok || !responseData || !responseData.message) {
         throw new Error('Failed to fetch user data.');
     }
 
-    return responseData.data;
+    return responseData.message;
 });
 
 const userSlice = createSlice({

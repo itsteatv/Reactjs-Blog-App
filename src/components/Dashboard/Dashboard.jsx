@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import styles from './Dashboard.module.css';
 import userProfile from '../../assets/UsersProfile/userProfile.png';
 import Skeleton from '@mui/material/Skeleton';
+import ResultPage from '../UI/ResultPage';
 
 function Dashboard() {
     const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function Dashboard() {
                         </Link>
                     </section>
                 </>
-            ) : null}
+            ) : <ResultPage />}
         </div>
     );
 }
