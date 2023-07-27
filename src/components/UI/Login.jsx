@@ -53,8 +53,8 @@ function Login() {
 
             const responseData = await response.json()
 
-            if (!responseData.data || !responseData.data.token || response.status === 422) {
-                throw new Error("Unexpected response from the server.");
+            if (response.status === 422 || !responseData.data || !responseData.data.token) {
+                throw new Error("Invalid email or password.");
             }
 
             const token = responseData.data.token;

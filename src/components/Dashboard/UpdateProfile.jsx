@@ -10,7 +10,6 @@ import Cookies from 'js-cookie';
 function UpdateProfile() {
     const dispatch = useDispatch();
     const { data: userData, loading, error } = useSelector((state) => state.user);
-
     const [formData, setFormData] = useState({
         name: '',
         username: '',
@@ -43,8 +42,6 @@ function UpdateProfile() {
         }
     }, [userData]);
 
-    console.log(userData);
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -62,13 +59,24 @@ function UpdateProfile() {
             });
 
             const data = await response.json();
-            console.log(data);
 
-            if (!response.ok) {
+            if (response.ok) {
+                toast.success("User Updated Successfully");
+            } else if (response.status === 422) {
+                const errors = data?.errors || {};
+                if (errors.email && errors.email.length > 0) {
+                    toast.error(errors.email[0]);
+                } else if (errors.username && errors.username.length > 0) {
+                    toast.error(errors.username[0]);
+                } else {
+                    throw new Error("Validation Error");
+                }
+            } else {
                 throw new Error("Couldn't Send Data to API");
             }
+
         } catch (error) {
-            console.error(error);
+            toast.error("Error: " + error.message)
         }
     };
 
@@ -92,7 +100,6 @@ function UpdateProfile() {
                             type="text"
                             id="name"
                             name="name"
-                            // defaultValue={userData ? userData.name : ""}
                             value={formData.name}
                             onChange={handleChange}
                             className={styles['form-input']}
@@ -103,7 +110,6 @@ function UpdateProfile() {
                             type="text"
                             id="username"
                             name="username"
-                            // defaultValue={userData ? userData.username : ""}
                             className={styles['form-input']}
                             value={formData.username}
                             onChange={handleChange}
@@ -114,7 +120,6 @@ function UpdateProfile() {
                             type="email"
                             id="email"
                             name="email"
-                            // defaultValue={userData ? userData.email : ""}
                             className={styles['form-input']}
                             value={formData.email}
                             onChange={handleChange}
