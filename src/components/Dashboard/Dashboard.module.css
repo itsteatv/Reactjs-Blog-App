@@ -12,7 +12,16 @@
   transform: translate(-50%, -50%);
   border: 1px solid var(--border-txt);
   text-align: center;
-  padding: 3rem;
+  padding: 1rem;
+}
+
+.dashboard-form {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .user-profile {
@@ -41,7 +50,16 @@
   padding: 10px 25px;
   background: rgba(75, 107, 251, 0.05);
   border-radius: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
+}
+
+.update-image {
+  border: none;
+  transition: 0.3s;
+}
+
+.update-image:hover {
+  scale: 1.1;
 }
 
 .update-profile-span {
@@ -51,6 +69,19 @@
   font-size: 14px;
   line-height: 20px;
   color: #4b6bfb;
+}
+
+.form-input {
+  margin-bottom: 2rem;
+  display: none;
+}
+
+input[type="file"]::file-selector-button {
+  display: none;
+}
+
+.form-label {
+  margin-top: 1rem;
 }
 
 /* 350px */
