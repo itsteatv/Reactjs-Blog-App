@@ -1,15 +1,25 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchUserData } from '../store/userSlice';
+import { fetchUserData, updateUserProfile, updateUserData } from '../store/userSlice';
 import { toast } from 'react-toastify';
 import ResultPage from "../UI/ResultPage"
 import styles from './UpdateProfile.module.css';
 import Skeleton from '@mui/material/Skeleton';
-import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
+import FullscreenModal from '../UI/FullscreenModal';
 
 function UpdateProfile() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const { data: userData, loading, error } = useSelector((state) => state.user);
+
+    const [image, setImage] = useState(null);
+    const [isFormEdited, setIsFormEdited] = useState(false);
+    const [isImageSelected, setIsImageSelected] = useState(false);
+    const [imagePreviewUrl, setImagePreviewUrl] = useState(null);
+    const [showModal, setShowModal] = useState(false);
+
     const [formData, setFormData] = useState({
         name: '',
         username: '',
@@ -22,6 +32,7 @@ function UpdateProfile() {
             ...prevFormData,
             [name]: value,
         }));
+        setIsFormEdited(true);
     };
 
     useEffect(() => {
@@ -42,41 +53,59 @@ function UpdateProfile() {
         }
     }, [userData]);
 
+    const handleImageChange = (e) => {
+        const selectedImage = e.target.files[0];
+        const previewUrl = URL.createObjectURL(selectedImage);
+
+        setImagePreviewUrl(previewUrl);
+        setImage(selectedImage);
+        setIsImageSelected(true);
+        toggleModal();
+    };
+
+    const toggleModal = () => {
+        setShowModal((prevShowModal) => !prevShowModal);
+    };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const authHeader = `Bearer ${Cookies.get("token")}`;
-
         try {
-            const response = await fetch("https://neisiali.ir/api/user", {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                    Authorization: authHeader,
-                },
-                body: JSON.stringify(formData),
-            });
+            await dispatch(updateUserData(formData));
 
-            const data = await response.json();
+            navigate("/dashboard");
 
-            if (response.ok) {
-                toast.success("User Updated Successfully");
-            } else if (response.status === 422) {
-                const errors = data?.errors || {};
-                if (errors.email && errors.email.length > 0) {
-                    toast.error(errors.email[0]);
-                } else if (errors.username && errors.username.length > 0) {
-                    toast.error(errors.username[0]);
-                } else {
-                    throw new Error("Validation Error");
-                }
-            } else {
-                throw new Error("Couldn't Send Data to API");
-            }
+            setTimeout(() => {
+                navigate("/setting");
+            }, 6000);
 
         } catch (error) {
-            toast.error("Error: " + error.message)
+            console.error(error);
+        }
+    };
+
+    // Update Image
+    const handleImageSubmit = async (event) => {
+        event.preventDefault();
+
+        const formDataToSend = new FormData();
+        formDataToSend.append('image', image);
+
+        try {
+            await dispatch(updateUserProfile(formDataToSend));
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 0.1);
+
+            toast.success('User Profile Updated Successfully', {
+                autoClose: 100,
+            });
+
+            setImage(null);
+
+        } catch (error) {
+            toast.error('Error: ' + error.message);
         }
     };
 
@@ -93,44 +122,70 @@ function UpdateProfile() {
                     </form>
                 </section>
             ) : userData ? (
-                <section aria-label="update profile" className={styles['update-profile']}>
-                    <h1 className={styles['edit-profile-title']}>Edit Profile</h1>
-                    <form className={styles['update-form']} onSubmit={handleSubmit}>
-                        <input
-                            type="text"
-                            id="name"
-                            name="name"
-                            value={formData.name}
-                            onChange={handleChange}
-                            className={styles['form-input']}
-                            placeholder="Your Name"
+                <>
+                    <section aria-label="update profile" className={styles['update-profile']}>
+                        <img
+                            className={styles['user-profile']}
+                            src={userData.image}
+                            alt="userprofile"
                         />
+                        <h1 className={styles['edit-profile-title']}>Edit Profile</h1>
+                        <form className={styles['update-form']} onSubmit={handleSubmit}>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                className={styles['form-input']}
+                                placeholder="Your Name"
+                            />
 
-                        <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            className={styles['form-input']}
-                            value={formData.username}
-                            onChange={handleChange}
-                            placeholder="Your Username"
-                        />
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                className={styles['form-input']}
+                                value={formData.username}
+                                onChange={handleChange}
+                                placeholder="Your Username"
+                            />
 
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            className={styles['form-input']}
-                            value={formData.email}
-                            onChange={handleChange}
-                            placeholder="Your Email"
-                        />
-
-                        <button className={styles['update-profile-button']} type="submit">
-                            <span className={styles['save-button']}>Save</span>
-                        </button>
-                    </form>
-                </section>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                className={styles['form-input']}
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="Your Email"
+                            />
+                            <button disabled={!isFormEdited} className={`${styles['update-profile-button']}`} type="submit">
+                                <span className={styles['save-button']}>Save</span>
+                            </button>
+                        </form>
+                        {/* Image Upload */}
+                        <form className={styles['update-image-form']} onSubmit={handleImageSubmit}>
+                            <label className={styles["form-label"]}>
+                                <input
+                                    type="file"
+                                    id="image"
+                                    name="image"
+                                    className={styles['form-input']}
+                                    onChange={handleImageChange}
+                                />
+                            </label>
+                            <button disabled={!isImageSelected} type="submit" className={`${styles['update-profile-btn']} ${styles['upload-image']}`}>
+                                <span className={styles['update-profile-span']}>upload image</span>
+                            </button>
+                        </form>
+                        {image && (
+                            <FullscreenModal open={showModal} onClose={toggleModal}>
+                                <img src={imagePreviewUrl} alt="Selected" />
+                            </FullscreenModal>
+                        )}
+                    </section>
+                </>
             ) : (
                 <ResultPage userData={userData} />
             )}

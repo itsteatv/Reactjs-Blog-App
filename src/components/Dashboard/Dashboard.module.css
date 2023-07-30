@@ -27,6 +27,7 @@
 .user-profile {
   width: 20%;
   height: 20%;
+  border-radius: 50%;
 }
 
 .user {
@@ -51,15 +52,7 @@
   background: rgba(75, 107, 251, 0.05);
   border-radius: 1rem;
   margin-top: 1rem;
-}
-
-.update-image {
   border: none;
-  transition: 0.3s;
-}
-
-.update-image:hover {
-  scale: 1.1;
 }
 
 .update-profile-span {
@@ -71,18 +64,6 @@
   color: #4b6bfb;
 }
 
-.form-input {
-  margin-bottom: 2rem;
-  display: none;
-}
-
-input[type="file"]::file-selector-button {
-  display: none;
-}
-
-.form-label {
-  margin-top: 1rem;
-}
 
 /* 350px */
 @media (max-width: 21.875em) {
