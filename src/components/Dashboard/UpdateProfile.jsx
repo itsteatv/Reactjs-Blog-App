@@ -170,7 +170,7 @@ function UpdateProfile() {
                                 className={styles['form-input']}
                                 value={formData.bio}
                                 onChange={handleChange}
-                                placeholder="Your bio"
+                                placeholder={!formData.bio && 'Please enter your bio'}
                             />
 
                             <button disabled={!isFormEdited} className={`${styles['update-profile-button']}`} type="submit">
