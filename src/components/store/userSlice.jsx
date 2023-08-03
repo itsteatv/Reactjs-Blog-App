@@ -21,13 +21,13 @@ const fetchUserData = createAsyncThunk('user/fetchUserData', async (_, { getStat
 
     const responseData = await response.json();
 
-    console.log(responseData.message);
+    console.log(responseData);
 
     if (!response.ok || !responseData || !responseData.message) {
         throw new Error('Failed to fetch user data.');
     }
 
-    return responseData.message;
+    return responseData.data;
 });
 
 export const updateUserProfile = createAsyncThunk('user/updateUserProfile', async (formData, { rejectWithValue }) => {
