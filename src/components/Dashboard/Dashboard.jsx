@@ -43,7 +43,9 @@ function Dashboard() {
                         <h6 className={`${styles['user-name']} ${styles.user}`}>Username: {userData.username}</h6>
                         <p className={`${styles['user-email']} ${styles.user}`}>Email: {userData.email}</p>
                         <p className={`${styles['user-created-at']} ${styles.user}`}>Created At: {userData.created_at}</p>
-                        <p className={`${styles['user-created-at']} ${styles.user}`}>Created At: {userData.bio}</p>
+                        <p className={`${styles['user-created-at']} ${styles.user}`}>
+                            {userData.bio ? `Bio: ${userData.bio}` : "No bio information provided."}
+                        </p>
                         <Link className={styles['update-profile']} to="/setting">
                             <span className={styles['update-profile-span']}>update profile</span>
                         </Link>
