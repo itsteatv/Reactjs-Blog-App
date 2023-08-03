@@ -24,6 +24,7 @@ function UpdateProfile() {
         name: '',
         username: '',
         email: '',
+        bio: '',
     });
 
     const handleChange = (e) => {
@@ -49,6 +50,7 @@ function UpdateProfile() {
                 name: userData.name,
                 username: userData.username,
                 email: userData.email,
+                bio: userData.bio,
             });
         }
     }, [userData]);
@@ -160,6 +162,17 @@ function UpdateProfile() {
                                 onChange={handleChange}
                                 placeholder="Your Email"
                             />
+
+                            <input
+                                type="text"
+                                id="bio"
+                                name="bio"
+                                className={styles['form-input']}
+                                value={formData.bio}
+                                onChange={handleChange}
+                                placeholder="Your bio"
+                            />
+
                             <button disabled={!isFormEdited} className={`${styles['update-profile-button']}`} type="submit">
                                 <span className={styles['save-button']}>Save</span>
                             </button>
