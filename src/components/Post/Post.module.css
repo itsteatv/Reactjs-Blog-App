@@ -94,6 +94,12 @@
   margin-top: 16px;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 /* 450px */
 @media (max-width: 28em) {
   /* .container {
