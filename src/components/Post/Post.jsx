@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { Skeleton } from "@mui/material";
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";
-import styles from "./Post.module.css"; // Make sure your import path is correct
+import styles from "./Post.module.css";
+import { format } from "date-fns";
 
 function SinglePost() {
     const [isLoading, setLoading] = useState(true);
@@ -116,7 +117,9 @@ function SinglePost() {
                                     width="50%"
                                 />
                             ) : (
-                                <p className={styles.date}>{post.date}</p>
+                                <p className={styles.date}>
+                                    {format(new Date(post.created_at), "MMMM d, yyyy")}
+                                </p>
                             )}
                         </div>
                     </div>
