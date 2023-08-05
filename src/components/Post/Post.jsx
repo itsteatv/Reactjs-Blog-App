@@ -62,7 +62,7 @@ function SinglePost() {
 
     return (
         <>
-            {!isLoading ?
+            {isLoading ?
                 <div className={styles.loading}>
                     <Waveform
                         size={40}
