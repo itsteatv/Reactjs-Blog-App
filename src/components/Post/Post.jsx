@@ -2,18 +2,16 @@ import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { Skeleton } from "@mui/material";
 import { toast } from "react-toastify";
+import { format } from "date-fns";
 import Cookies from "js-cookie";
 import styles from "./Post.module.css";
-import { format } from "date-fns";
+import Pagination from "../UI/Pagination";
 
 function SinglePost() {
     const [isLoading, setLoading] = useState(true);
-
     const [allPosts, setAllPosts] = useState([]);
     const [currentPage, setCurrentPage] = useState();
-    const [perPage, setPerPage] = useState();
-    const [prevPageUrl, setPrevPageUrl] = useState();
-    const [nextPageUrl, setNextPageUrl] = useState();
+    const [postPerPage, setPostPerPage] = useState(10);
 
     useEffect(() => {
         fetchPostData();
@@ -31,7 +29,7 @@ function SinglePost() {
         const authHeader = `Bearer ${Cookies.get("token")}`;
 
         try {
-            const response = await fetch("https://neisiali.ir/api/posts", {
+            const response = await fetch(`https://neisiali.ir/api/posts?page=${currentPage}`, {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
@@ -42,8 +40,6 @@ function SinglePost() {
 
             const responseData = await response.json();
             console.log(responseData);
-            console.log(responseData.links);
-            console.log(responseData.meta);
 
             if (!response.ok) {
                 throw new Error("Failed to get posts.");
@@ -51,25 +47,18 @@ function SinglePost() {
 
             setAllPosts(responseData.data);
             setCurrentPage(responseData.meta.current_page);
-            setPerPage(responseData.meta.per_page);
-            setPrevPageUrl(responseData.links.prev);
-            setNextPageUrl(responseData.links.next);
         }
         catch (error) {
             toast.error('An error occurred: ' + error.message);
         }
     }
+    const indexOfLastPost = currentPage * postPerPage;
+    const indexOfFirstPost = indexOfLastPost - postPerPage;
+    const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
+    console.log(indexOfLastPost, indexOfFirstPost, currentPosts);
 
-    const currentPosts = allPosts.slice(
-        (currentPage - 1) * perPage,
-        currentPage * perPage
-    );
-
-    const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
-
-    const totalPages = Math.ceil(allPosts.length / perPage);
+    // Change page
+    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <>
@@ -147,30 +136,11 @@ function SinglePost() {
                     </Link>
                 ))}
             </div>
-            <div className={styles.pagination}>
-                <button
-                    onClick={() => handlePageChange(currentPage - 1)}
-                    disabled={!prevPageUrl}
-                >
-                    Previous
-                </button>
-                {Array.from({ length: totalPages }, (_, index) => (
-                    <button
-                        key={index + 1}
-                        onClick={() => handlePageChange(index + 1)}
-                        disabled={currentPage === index + 1}
-                    >
-                        {index + 1}
-                    </button>
-                ))}
-                <button
-                    onClick={() => handlePageChange(currentPage + 1)}
-                    disabled={!nextPageUrl}
-                >
-                    Next
-                </button>
-            </div>
-
+            <Pagination
+                postsPerPage={postPerPage}
+                totalPosts={allPosts.length}
+                paginate={paginate}
+            />
         </>
     );
 }
