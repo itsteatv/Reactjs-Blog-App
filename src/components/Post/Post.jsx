@@ -6,13 +6,14 @@ import Cookies from "js-cookie";
 import styles from "./Post.module.css";
 import { format } from "date-fns";
 
-const POSTS_PER_PAGE = 2;
-
 function SinglePost() {
     const [isLoading, setLoading] = useState(true);
 
     const [allPosts, setAllPosts] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState();
+    const [perPage, setPerPage] = useState();
+    const [prevPageUrl, setPrevPageUrl] = useState();
+    const [nextPageUrl, setNextPageUrl] = useState();
 
     useEffect(() => {
         fetchPostData();
@@ -41,13 +42,18 @@ function SinglePost() {
 
             const responseData = await response.json();
             console.log(responseData);
-            console.log(responseData.data[0].categories[0].name);
+            console.log(responseData.links);
+            console.log(responseData.meta);
 
             if (!response.ok) {
                 throw new Error("Failed to get posts.");
             }
 
             setAllPosts(responseData.data);
+            setCurrentPage(responseData.meta.current_page);
+            setPerPage(responseData.meta.per_page);
+            setPrevPageUrl(responseData.links.prev);
+            setNextPageUrl(responseData.links.next);
         }
         catch (error) {
             toast.error('An error occurred: ' + error.message);
@@ -55,15 +61,15 @@ function SinglePost() {
     }
 
     const currentPosts = allPosts.slice(
-        (currentPage - 1) * POSTS_PER_PAGE,
-        currentPage * POSTS_PER_PAGE
+        (currentPage - 1) * perPage,
+        currentPage * perPage
     );
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
 
-    const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+    const totalPages = Math.ceil(allPosts.length / perPage);
 
     return (
         <>
@@ -142,14 +148,29 @@ function SinglePost() {
                 ))}
             </div>
             <div className={styles.pagination}>
-                <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
+                <button
+                    onClick={() => handlePageChange(currentPage - 1)}
+                    disabled={!prevPageUrl}
+                >
+                    Previous
+                </button>
                 {Array.from({ length: totalPages }, (_, index) => (
-                    <button key={index + 1} onClick={() => handlePageChange(index + 1)} disabled={currentPage === index + 1}>
+                    <button
+                        key={index + 1}
+                        onClick={() => handlePageChange(index + 1)}
+                        disabled={currentPage === index + 1}
+                    >
                         {index + 1}
                     </button>
                 ))}
-                <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
+                <button
+                    onClick={() => handlePageChange(currentPage + 1)}
+                    disabled={!nextPageUrl}
+                >
+                    Next
+                </button>
             </div>
+
         </>
     );
 }
