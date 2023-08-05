@@ -101,31 +101,10 @@
 
 @media (max-width: 44em) {
   .container {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: none;
   }
 
   .badge-container {
     display: none;
-  }
-}
-
-@media (max-width: 31.25em) {
-  .header-image {
-    width: 80%;
-  }
-
-  .container {
-    align-items: center;
-  }
-
-  .userImage {
-    width: 30%;
-  }
-
-  .title {
-    text-align: center;
   }
 }
