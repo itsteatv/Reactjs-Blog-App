@@ -1,0 +1,8 @@
+.pagination {
+  margin: 1rem auto;
+}
+
+.MuiPagination-ul {
+  display: flex;
+  justify-content: center;
+}

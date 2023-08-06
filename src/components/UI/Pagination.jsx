@@ -1,5 +1,5 @@
-import styles from './Pagination.module.css';
 import { Pagination as MuiPagination } from "@mui/material";
+import "./Pagination.css"
 
 function Pagination({ meta, fetchPostData }) {
     const prev = meta.links && meta.links[0] ? meta.links[0].url : null;
@@ -8,14 +8,15 @@ function Pagination({ meta, fetchPostData }) {
     const lastPage = meta.last_page || 1;
 
     return (
-        <div className={styles.pagination}>
+        <div className="pagination">
             <MuiPagination
                 count={lastPage}
                 page={current}
                 showFirstButton
                 showLastButton
-                variant="outlined"
-                shape="rounded"
+                variant="text"
+                shape="circular"
+                className="MuiPagination-root"
                 onChange={(event, page) => fetchPostData(page)}
             />
         </div>
