@@ -3,6 +3,9 @@
 }
 
 .MuiPagination-ul {
-  display: flex;
   justify-content: center;
+}
+
+.MuiPagination-root button {
+  color: hsl(var(--txt));
 }

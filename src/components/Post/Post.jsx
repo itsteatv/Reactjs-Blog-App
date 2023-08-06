@@ -140,7 +140,7 @@ function SinglePost() {
                             </Link>
                         ))}
                     </div>
-                    <Pagination meta={metaData} fetchPostData={fetchPostData} />
+                    <Pagination meta={metaData} fetchPostData={fetchPostData} isLoading={isLoading} />
                 </>
             }
         </>
