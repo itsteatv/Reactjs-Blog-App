@@ -11,8 +11,7 @@ import Pagination from "../UI/Pagination";
 function SinglePost() {
     const [isLoading, setLoading] = useState(true);
     const [allPosts, setAllPosts] = useState([]);
-    const [currentPage, setCurrentPage] = useState();
-    const [postPerPage, setPostPerPage] = useState(10);
+    const [metaData, setMetaData] = useState([]);
 
     useEffect(() => {
         fetchPostData();
@@ -26,11 +25,11 @@ function SinglePost() {
         return () => clearTimeout(timer);
     }, []);
 
-    const fetchPostData = async function () {
+    const fetchPostData = async function (page = 1) {
         const authHeader = `Bearer ${Cookies.get("token")}`;
 
         try {
-            const response = await fetch(`https://neisiali.ir/api/posts?page=${currentPage}`, {
+            const response = await fetch(`https://neisiali.ir/api/posts?page=${page}`, {
                 method: "GET",
                 headers: {
                     Accept: "application/json",
@@ -40,25 +39,19 @@ function SinglePost() {
             });
 
             const responseData = await response.json();
-            console.log(responseData);
+            // console.log(responseData.meta);
 
             if (!response.ok) {
                 throw new Error("Failed to get posts.");
             }
 
             setAllPosts(responseData.data);
-            setCurrentPage(responseData.meta.current_page);
+            setMetaData(responseData.meta);
         }
         catch (error) {
             toast.error('An error occurred: ' + error.message);
         }
     }
-    const indexOfLastPost = currentPage * postPerPage;
-    const indexOfFirstPost = indexOfLastPost - postPerPage;
-    const currentPosts = allPosts.slice(indexOfFirstPost, indexOfLastPost);
-    console.log(indexOfLastPost, indexOfFirstPost, currentPosts);
-
-    const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <>
@@ -74,7 +67,7 @@ function SinglePost() {
                 :
                 <>
                     <div className={styles["single-post"]}>
-                        {currentPosts.map((post) => (
+                        {allPosts.map((post) => (
                             <Link to={`/post/${post.id}`} key={post.id} className={styles.link}>
                                 <div className={styles.container}>
                                     {isLoading ? (
@@ -147,11 +140,7 @@ function SinglePost() {
                             </Link>
                         ))}
                     </div>
-                    <Pagination
-                        postsPerPage={postPerPage}
-                        totalPosts={allPosts.length}
-                        paginate={paginate}
-                    />
+                    <Pagination meta={metaData} fetchPostData={fetchPostData} />
                 </>
             }
         </>
