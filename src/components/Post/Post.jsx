@@ -3,15 +3,19 @@ import { Link } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { format } from "date-fns";
 import { Skeleton } from "@mui/material";
-import { Waveform } from '@uiball/loaders'
+import { Waveform } from '@uiball/loaders';
+import { useDispatch } from 'react-redux';
+import { setPosts, setSelectedPost } from '../store/PostsSlice';
 import Cookies from "js-cookie";
 import styles from "./Post.module.css";
 import Pagination from "../UI/Pagination";
 
-function SinglePost() {
+function Post() {
     const [isLoading, setLoading] = useState(true);
     const [allPosts, setAllPosts] = useState([]);
     const [metaData, setMetaData] = useState([]);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetchPostData();
@@ -39,7 +43,6 @@ function SinglePost() {
             });
 
             const responseData = await response.json();
-            // console.log(responseData.meta);
 
             if (!response.ok) {
                 throw new Error("Failed to get posts.");
@@ -47,6 +50,7 @@ function SinglePost() {
 
             setAllPosts(responseData.data);
             setMetaData(responseData.meta);
+            dispatch(setPosts(responseData.data));
         }
         catch (error) {
             toast.error('An error occurred: ' + error.message);
@@ -68,7 +72,9 @@ function SinglePost() {
                 <>
                     <div className={styles["single-post"]}>
                         {allPosts.map((post) => (
-                            <Link to={`/post/${post.id}`} key={post.id} className={styles.link}>
+                            <Link to={`/post/${post.id}`} key={post.id} className={styles.link}
+                                onClick={() => dispatch(setSelectedPost(post))}
+                            >
                                 <div className={styles.container}>
                                     {isLoading ? (
                                         <Skeleton
@@ -147,4 +153,4 @@ function SinglePost() {
     );
 }
 
-export default SinglePost;
+export default Post;
