@@ -65,32 +65,12 @@ To run the project locally, follow these steps:
   npm run dev
 ```
 
-# Folder Structure
-
-src
-├── components
-│ ├── AllPosts
-│ ├── Dashboard
-│ ├── Error
-│ ├── Header
-│ ├── hooks
-│ ├── Navbar
-│ └── Post
-│ └── ScrollToTop
-│ └── SinglePost
-│ └── store
-│ └── Theme Switcher
-│ └── UI
-├── App.css
-├── App.jsx
-└── main.jsx
-
 # Contributing
 
 Contributions are welcome! If you find any issues or have suggestions for improvement, please feel free to submit a pull request.
 
 # Acknowledgements
 
-The LOS POLLOS HERMANOS Food Ordering app was developed as part of a React.js learning project and the design inspiration for this project came from the TV show "Breaking Bad". The fictional restaurant "LOS POLLOS HERMANOS" is a trademark of Sony Pictures Television." Special thanks to the creators of React.js, Vite, and Firebase for providing the tools and resources necessary to build this application.
+Special thanks to my backend developer friend for helping me to made this full stack blog app.
 
 ### This app is for educational purposes only.
