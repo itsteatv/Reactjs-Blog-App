@@ -2,11 +2,38 @@ import styles from "./SinglePost.module.scss"
 import UserImage from "../../assets/UserImage.png"
 import SinglePostImage from "../../assets/SinglePostImage.png"
 import SecSinglePostImage from "../../assets/SecSinglePostImage.png"
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setSelectedPost } from "../store/PostsSlice";
 
 function SinglePost() {
     const selectedPost = useSelector(state => state.posts.selectedPost);
+    const dispatch = useDispatch();
     console.log(selectedPost)
+
+    useEffect(() => {
+        if (selectedPost) {
+            const expirationTimestamp = Date.now() + 3600000;
+            console.log(expirationTimestamp)
+            const dataToStore = {
+                selectedPost,
+                expirationTimestamp,
+            };
+            localStorage.setItem("selectedPost", JSON.stringify(dataToStore));
+        }
+    }, [selectedPost]);
+
+    useEffect(() => {
+        const storedData = JSON.parse(localStorage.getItem("selectedPost"));
+        if (storedData) {
+            const currentTime = Date.now();
+            if (storedData.expirationTimestamp > currentTime) {
+                dispatch(setSelectedPost(storedData.selectedPost));
+            } else {
+                localStorage.removeItem("selectedPost");
+            }
+        }
+    }, [dispatch]);
 
     return (
         <>
