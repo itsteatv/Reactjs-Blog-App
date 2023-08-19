@@ -1,4 +1,4 @@
-# food-ordering-app
+# Reactjs-Blog-App
 
 Experience the future of blogging with our cutting-edge full stack blog app built using React.js, Laravel, Mantine UI & Material UI components and React Router v6.4. Seamlessly navigate through captivating content, enjoy stunning visuals, and engage with a user interface that seamlessly blends innovation and style. From intuitive navigation powered by React Router v6.4 to the elegant design achieved through Mantine UI and Material UI, this app redefines the way you interact with blogs. Get ready for a dynamic, feature-rich, and visually immersive blogging journey like never before.
 
